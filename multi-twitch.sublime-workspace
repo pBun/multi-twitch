@@ -1,0 +1,1268 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"jive-",
+				"jive-accent"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"jive-defa",
+				"jive-default-font-family"
+			],
+			[
+				"8px",
+				"8px"
+			],
+			[
+				"defau",
+				"jive-default-font-family"
+			],
+			[
+				"defa",
+				"jive-default-font-family"
+			],
+			[
+				"jive",
+				"jive-accent"
+			],
+			[
+				"catego",
+				"categoryDefs"
+			],
+			[
+				"getPageCat",
+				"getPageCategory"
+			],
+			[
+				"resize",
+				"resizeBlogGridItems"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"convert",
+				"convertedInnerPath"
+			],
+			[
+				"import",
+				"importContents"
+			],
+			[
+				"ch",
+				"clientLibChildDirs"
+			],
+			[
+				"clientLib",
+				"clientLibChildDirs"
+			],
+			[
+				"client",
+				"clientLibChildDirs"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "gulpfile.js/config/webpack.js",
+			"settings":
+			{
+				"buffer_size": 1648,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/layouts/application.html",
+			"settings":
+			{
+				"buffer_size": 601,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/assets/javascripts/page1.js",
+			"settings":
+			{
+				"buffer_size": 341,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/index.html",
+			"settings":
+			{
+				"buffer_size": 388,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 67.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 575.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2deb499853c4371624f5a07e27c334aa' + 'bf8c4e67d14fb0525ba4f89698a6d7e1'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/dboersma/projects/me/multi-twitch",
+		"/Users/dboersma/projects/me/multi-twitch/app",
+		"/Users/dboersma/projects/me/multi-twitch/app/assets",
+		"/Users/dboersma/projects/me/multi-twitch/app/assets/javascripts",
+		"/Users/dboersma/projects/me/multi-twitch/app/views",
+		"/Users/dboersma/projects/me/multi-twitch/gulpfile.js/config",
+		"/Users/dboersma/projects/me/multi-twitch/public",
+		"/Users/dboersma/projects/me/multi-twitch/public/assets"
+	],
+	"file_history":
+	[
+		"/Users/dboersma/projects/me/multi-twitch/app/assets/javascripts/vendor/angular.js",
+		"/Users/dboersma/projects/me/multi-twitch/app/assets/javascripts/vendor/angular",
+		"/Users/dboersma/projects/me/multi-twitch/app/assets/javascripts/page1.js",
+		"/Users/dboersma/projects/me/multi-twitch/app/views/layouts/application.html",
+		"/Users/dboersma/projects/me/multi-twitch/app/assets/javascripts/asyncMessage.js",
+		"/Users/dboersma/projects/me/multi-twitch/app/assets/javascripts/page2.js",
+		"/Users/dboersma/projects/me/multi-twitch/app/assets/javascripts/exclaimify.js",
+		"/Users/dboersma/projects/me/multi-twitch/package.json",
+		"/Users/dboersma/projects/me/multi-twitch/public/index.html",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/css/jive-core.less",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/js/jive-bo-blog.js",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/clientlibs/common/js/bo-menu.js",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/js/jive-bo-hacks.js",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/css.txt",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/js.txt",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/js/jive-bo-core.js",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/js/jive-init.js",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/css/jive-utils.less",
+		"/Users/dboersma/projects/atvi/blackops3/build/etc/designs/atvi/callofduty/blackops3/jivelibs-v7.css",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/css/jive-forums.less",
+		"/Users/dboersma/projects/atvi/blackops3/build/etc/designs/atvi/callofduty/blackops3/clientlibs/home.js",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/js/jive-bo.js",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/clientlibs/common/js/bo-core.js",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/clientlibs/buy/js/bo-buy.js",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/clientlibs/common/css/utils/bo-fonts.less",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/clientlibs/home/css.txt",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/css/jive-blog.less",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/clientlibs/common/css/bo-utils.less",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/clientlibs/common/css/utils/bo-mixins.less",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/clientlibs/common/css/utils/bo-colors.less",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/clientlibs/media/js.txt",
+		"/Users/dboersma/projects/atvi/blackops3/gulp/util/txtConcat.js",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/clientlibs/home/js.txt",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/clientlibs/common/js/bo-social.js",
+		"/Users/dboersma/projects/atvi/blackops3/build/etc/designs/atvi/callofduty/blackops3/jivelibs-v7.js",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/clientlibs/common/js/bo-fonts.js",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/css/jive-gh.less",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/clientlibs/home/css/bo-home-game-reveal.less",
+		"/Users/dboersma/projects/atvi/blackops3/src/etc/designs/atvi/callofduty/blackops3/clientlibs/buy/css.txt",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/utils/gh-layout-modules/gh-twitter-instagram-animation.less",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/utils/gh-mixins.less",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/gh-utils.less",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/utils/gh-layout-modules/gh-grid-social-ui.less",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/home/css/gh-home-latest.less",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/jive-widgets.less",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/utils/gh-ui-elements.less",
+		"/Users/dboersma/projects/atvi/guitarhero/build/etc/designs/atvi/guitarhero/live/jivelibs-v7.css",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/jive-core.less",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/jivelibs-v7/js/jive-core.js",
+		"/Users/dboersma/nohup.out",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-less/node_modules/convert-source-map/test/comment-regex.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp/node_modules/liftoff/node_modules/resolve/lib/core.json",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-less/node_modules/less/node_modules/promise/lib/core.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp/node_modules/liftoff/node_modules/resolve/test/core.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp/node_modules/liftoff/node_modules/resolve/lib/core.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-less/node_modules/less/node_modules/promise/core.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp/lib/completion.js",
+		"/Users/dboersma/projects/atvi/guitarhero/gulp/tasks/clean.js",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/jive-theme-override.less",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/jivelibs-v7/js/jive-init.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-util/lib/isNull.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp/index.js",
+		"/Users/dboersma/projects/atvi/guitarhero/build/etc/designs/atvi/guitarhero/live/clientlibs/home.js",
+		"/Users/dboersma/projects/atvi/guitarhero/build/etc/designs/atvi/guitarhero/live/clientlibs/home.css",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/utils/gh-layout-modules/gh-grid-layout.less",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/home/css/gh-home-landing.less",
+		"/Users/dboersma/projects/atvi/guitarhero/gulp/util/handleErrors.js",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/home/css/gh-home-composite.less",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp/node_modules/liftoff/node_modules/flagged-respawn/test/bin/exit_code.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-less/test/fixtures/forms.less",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-notify/node_modules/through2/node_modules/readable-stream/float.patch",
+		"/Users/dboersma/projects/atvi/guitarhero/gulp/tasks/watch.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-less/node_modules/less/node_modules/image-size/lib/types/webp.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp/node_modules/vinyl-fs/lib/dest/writeContents/writeBuffer.js",
+		"/Users/dboersma/.config/livestreamer/config/.livestreamerrc",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/utils/gh-layout-modules/gh-carousel-dots.less",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/utils/gh-layout-modules/gh-indented-text.less",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/utils/gh-layout-modules.less",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/landing/css/gh-landing.less",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/gh-agegate.less",
+		"/Users/dboersma/projects/atvi/guitarhero/gulpfile.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-rename/test/spec-helper.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/through2/node_modules/readable-stream/lib/_stream_passthrough.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp/node_modules/.bin/semver",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-less/node_modules/less/lib/less/tree/js-eval-node.js",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/jive-content-page.less",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/variables.less",
+		"/Users/dboersma/projects/atvi/guitarhero/build/etc/designs/atvi/guitarhero/live/jivelibs-v7.js",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/common/js/gh-core.js",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/common/js/gh-text.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-notify/lib/withReporter.js",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/generated/jive-core.css",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/jive-forum-override.less",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/generated/jive-widgets.less",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/generated/jive-widgets.css",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/gh-footer.less",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp/completion/fish",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-template/node_modules/lodash/dist/lodash.underscore.min.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-concat/node_modules/concat-with-sourcemaps/node_modules/source-map/Makefile.dryice.js",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/generated/jive-forum-override.css",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/generated/jive-forum-override.less",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/left bar empty when not logged in?",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-less/node_modules/less/node_modules/request/node_modules/http-signature/http_signing.md",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/home/css/gh-home-touts.less",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-less/node_modules/less/lib/less/contexts.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-less/node_modules/less/CONTRIBUTING.md",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp/node_modules/liftoff/lib/silent_require.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-add-src/node_modules/streamqueue/node_modules/readable-stream/node_modules/isarray/component.json",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/common/js/gh-scroll-icon.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-add-src/node_modules/streamqueue/src/index.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-add-src/index.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-less/node_modules/less/test/sourcemaps/index.html",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-add-src/node_modules/streamqueue/tests/index.mocha.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp/README.md",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-clean/node_modules/gulp-util/lib/replaceExtension.js",
+		"/Users/dboersma/projects/atvi/guitarhero/gulp/util/txtConcat.js",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/gh-nav.less",
+		"/Users/dboersma/Desktop/todo",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/common/js/gh-menu.js",
+		"/Users/dboersma/projects/atvi/guitarhero/src/etc/designs/atvi/guitarhero/live/clientlibs/game/templates/game-hero.txt",
+		"/Users/dboersma/Sites/httpd-vhosts.conf",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-notify/examples/jshint.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-add-src/test.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/.bin/gulp",
+		"/Users/dboersma/projects/atvi/guitarhero/gulp/tasks/default.js",
+		"/Users/dboersma/projects/atvi/guitarhero/gulp/tasks/clientlibs.js",
+		"/Users/dboersma/projects/atvi/guitarhero/gulp/tasks/less.js",
+		"/Users/dboersma/projects/atvi/guitarhero/node_modules/gulp-less/node_modules/less/lib/less/less-error.js"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"",
+			"*.js",
+			"",
+			"jivelibs-v7/",
+			"js/",
+			"jivelibs-v7/",
+			"*.js",
+			"",
+			"jivelibs-v7/",
+			"/jive",
+			"jive/",
+			"jive/*",
+			"/jive",
+			"jive",
+			"src/etc/designs/atvi/guitarhero/live/jive",
+			"",
+			"src/etc/designs/atvi/guitarhero/live/jive",
+			"",
+			"src/etc/designs/atvi/guitarhero/live/jive",
+			"",
+			"src/etc/designs/atvi/guitarhero/live/jive",
+			"*.less",
+			"",
+			"src/etc/designs/atvi/guitarhero/live/jive",
+			"*.less",
+			"",
+			"src/etc/designs/atvi/guitarhero/live/jive",
+			"",
+			"src/etc/designs/atvi/guitarhero/live/jive",
+			"",
+			"src/etc/designs/atvi/guitarhero/live/jive",
+			"src/",
+			"",
+			"src/etc/designs/atvi/guitarhero/live/jive",
+			"src/etc/designs/atvi/guitarhero/",
+			"src/etc/designs/atvi",
+			"src/etc/",
+			"src/etc/designs/atvi/guitarhero/jivelibs-v7",
+			"src/etc/designs/atvi/guitarhero/jivelibs-v7/",
+			"src/",
+			"gulp/",
+			"src/",
+			"",
+			"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/",
+			"*.js",
+			"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/",
+			"jivelibs-v7/",
+			"src/etc/designs/guitarhero/live/jivelibs-v7/",
+			"src/etc/designs/guitarhero/live/jivelibs-v7",
+			"src/",
+			"src",
+			"/src",
+			"",
+			"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/",
+			"",
+			"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/",
+			"",
+			"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/",
+			"src/",
+			"src/**/jive",
+			"src/",
+			"",
+			"*.less"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"webpackConfig",
+			".js",
+			"replyto",
+			".j-thread-post header h1 .j-thread-replyto, .j-thread-post header .j-post-author .j-thread-replyto",
+			".jive-widget-content-edit .jive-widget-header",
+			"thread",
+			"#j-header .logo-container",
+			"logo",
+			"logos-container",
+			".j-pop",
+			".j-pop-blurred",
+			"satNav-wrap",
+			"body #j-header-wrap",
+			"body",
+			"#j-satNav-indicator .j-update-count",
+			".j-box.j-enhanced",
+			".inner-container",
+			"#j-main .j-blog-landing .jive-content-blog .inner-container",
+			".inner-container",
+			".jive-content-blog .inner-container",
+			"#j-main .j-blog-landing .jive-content-blog .inner-container",
+			".jive-blog-post-message",
+			".jive-blog-post-message p",
+			".jive-blog-post-message",
+			".jive-blog-post-message p",
+			"j-blog",
+			".jive-discussion-replies .j-thread-post header h6 a, .jive-content header h1",
+			"reply",
+			"pop",
+			".j-body-place .jive-content-blog .right-column > span",
+			"0.75em",
+			".j-spaceGrid .j-place-card",
+			".more-content-wrapper",
+			"element",
+			".j-spaceGrid .j-place-card",
+			"#bar-wrapper",
+			"tr td",
+			".j-browse-details .j-td-title, .j-browse-details tr td",
+			"afterHeaderLoad",
+			"BO.menu",
+			"home",
+			"postload",
+			"BO.menu.init();",
+			"init",
+			"postload",
+			"BO.menu.init();",
+			"BO.menu",
+			"setupPersistentSocialLinks",
+			"toggler",
+			"header",
+			"persist",
+			"persistent-links",
+			"site-nav",
+			"persistent-links",
+			"/*",
+			"#d29f13",
+			"jive-widget",
+			".j-browse-details .j-td-icon, .j-browse-details .j-td-avatar",
+			"browse-details",
+			".j-browse-details table",
+			".j-browse-details .j-td-actions .j-browse-actions-button-text",
+			"h1",
+			".j-pop",
+			"j-pop",
+			"#j-links",
+			"#j-links li a",
+			"spotlight-find",
+			"jive-button",
+			"button",
+			"buttons",
+			"button",
+			".j-browse-details .j-td-title",
+			".j-browse-details table",
+			"padding-top: 12px",
+			"content",
+			"replies",
+			"j-social-action",
+			".j-social-actions",
+			".j-thread-post footer > ul",
+			"j-thread-post",
+			".j-thread-post header .j-post-author",
+			"j-thread-post",
+			"\"",
+			"proxim",
+			"modal",
+			"#n4jive_hover h5",
+			".j-tile-header h4",
+			".forums .j-tile .j-tile-header h4",
+			"h4",
+			"letter-spacing",
+			".j-tile .j-tile-header h4",
+			".jive-table th, .jive-table td",
+			"search input",
+			"h5 span",
+			"body {",
+			"/* sso bar offset */",
+			"padding-top: 100px;  /* sso bar offset */",
+			"body {",
+			"body #j-header-wrap",
+			"logo",
+			".logo-container",
+			"body {",
+			".site-nav .nav-list a",
+			"body {",
+			".j-spaceGrid h5 span",
+			"body {",
+			".j-body-place.forums .jive-widget-container-large .jive-widget-handle",
+			"#j-footer",
+			"body {",
+			"body",
+			"font-size: 14px",
+			"font-size: 14",
+			"breadcrumb",
+			"font-size",
+			"body",
+			"underline",
+			"moveElement",
+			"&:hover",
+			"color: #fff",
+			"logo",
+			".site-nav",
+			".site-nav .nav-list a",
+			"GH",
+			"init",
+			"fullScreen",
+			"resizeBlogGridItems",
+			"patternNum",
+			"gridRepeat"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"'",
+			"font-size: 16px",
+			"blogGridOptions",
+			"@jive-headline-font-family",
+			"@jive-default-font-family",
+			"@jive-headline-font-family",
+			"@jive-headline-font",
+			"jive-accent",
+			"@gh-accent",
+			"732px",
+			"Lato",
+			"hero-content",
+			"hero-people",
+			"#cc9800",
+			"// font-family",
+			"fph.convertRelPathToAbs",
+			"fph.removeLastDir",
+			"</h4>\n<p>",
+			"<h4>",
+			"</h4>\n<p>"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "gulpfile.js/config/webpack.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1648,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								623,
+								570
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/views/layouts/application.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 601,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								601,
+								601
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/assets/javascripts/page1.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 341,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								41,
+								41
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/views/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 388,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								138,
+								138
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 30.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "multi-twitch.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"application",
+				"app/views/layouts/application.html"
+			],
+			[
+				"packag",
+				"package.json"
+			],
+			[
+				"jivecore",
+				"src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/css/jive-core.less"
+			],
+			[
+				"jive-bo-blog",
+				"src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/js/jive-bo-blog.js"
+			],
+			[
+				"blog.js",
+				"src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/js/jive-bo-blog.js"
+			],
+			[
+				"jiveut",
+				"src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/css/jive-utils.less"
+			],
+			[
+				"blog",
+				"src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/css/jive-blog.less"
+			],
+			[
+				"home.js",
+				"build/etc/designs/atvi/callofduty/blackops3/clientlibs/home.js"
+			],
+			[
+				"",
+				"build/etc/designs/atvi/callofduty/blackops3/clientlibs/home.js"
+			],
+			[
+				"core.js",
+				"src/etc/designs/atvi/callofduty/blackops3/clientlibs/common/js/bo-core.js"
+			],
+			[
+				"jiveuti",
+				"src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/css/jive-utils.less"
+			],
+			[
+				"bo-fonts",
+				"src/etc/designs/atvi/callofduty/blackops3/clientlibs/common/css/utils/bo-fonts.less"
+			],
+			[
+				"bo-color",
+				"src/etc/designs/atvi/callofduty/blackops3/clientlibs/common/css/utils/bo-colors.less"
+			],
+			[
+				"bo-mix",
+				"src/etc/designs/atvi/callofduty/blackops3/clientlibs/common/css/utils/bo-mixins.less"
+			],
+			[
+				"bo-utils",
+				"src/etc/designs/atvi/callofduty/blackops3/clientlibs/common/css/bo-utils.less"
+			],
+			[
+				"mediajs.txt",
+				"src/etc/designs/atvi/callofduty/blackops3/clientlibs/media/js.txt"
+			],
+			[
+				"homejs.txt",
+				"src/etc/designs/atvi/callofduty/blackops3/clientlibs/home/js.txt"
+			],
+			[
+				"bohack",
+				"src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/js/jive-bo-hacks.js"
+			],
+			[
+				"js.txt",
+				"src/etc/designs/atvi/callofduty/blackops3/clientlibs/home/js.txt"
+			],
+			[
+				"jivecore.js",
+				"src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/js/jive-bo-core.js"
+			],
+			[
+				"jive-cor",
+				"src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/css/jive-core.less"
+			],
+			[
+				"bomenu",
+				"src/etc/designs/atvi/callofduty/blackops3/clientlibs/common/js/bo-menu.js"
+			],
+			[
+				"css.txt",
+				"src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/css.txt"
+			],
+			[
+				"bomixi",
+				"src/etc/designs/atvi/callofduty/blackops3/clientlibs/common/css/utils/bo-mixins.less"
+			],
+			[
+				"fonts.le",
+				"src/etc/designs/atvi/callofduty/blackops3/clientlibs/common/css/utils/bo-fonts.less"
+			],
+			[
+				"bofont",
+				"src/etc/designs/atvi/callofduty/blackops3/clientlibs/common/js/bo-fonts.js"
+			],
+			[
+				"bo-util",
+				"src/etc/designs/atvi/callofduty/blackops3/clientlibs/common/css/bo-utils.less"
+			],
+			[
+				"fonts",
+				"src/etc/designs/atvi/callofduty/blackops3/clientlibs/common/css/utils/bo-fonts.less"
+			],
+			[
+				"jiveless",
+				"src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/css/jive-core.less"
+			],
+			[
+				"jive-gh",
+				"src/etc/designs/atvi/callofduty/blackops3/jivelibs-v7/css/jive-gh.less"
+			],
+			[
+				"bohomegam",
+				"src/etc/designs/atvi/callofduty/blackops3/clientlibs/home/css/bo-home-game-reveal.less"
+			],
+			[
+				"bocor",
+				"src/etc/designs/atvi/callofduty/blackops3/clientlibs/common/js/bo-core.js"
+			],
+			[
+				"bo-cor",
+				"src/etc/designs/atvi/callofduty/blackops3/clientlibs/common/js/bo-core.js"
+			],
+			[
+				"gh-twitter-instagram-animation",
+				"src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/utils/gh-layout-modules/gh-twitter-instagram-animation.less"
+			],
+			[
+				"guit",
+				"src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/gh-utils.less"
+			],
+			[
+				"jiveco",
+				"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/jive-core.less"
+			],
+			[
+				"uiele",
+				"src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/utils/gh-ui-elements.less"
+			],
+			[
+				"socialui",
+				"src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/utils/gh-layout-modules/gh-grid-social-ui.less"
+			],
+			[
+				"uielemen",
+				"src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/utils/gh-ui-elements.less"
+			],
+			[
+				"gh",
+				"src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/gh-utils.less"
+			],
+			[
+				"corejs",
+				"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/js/jive-core.js"
+			],
+			[
+				"jive-core",
+				"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/jive-core.less"
+			],
+			[
+				"core",
+				"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/jive-core.less"
+			],
+			[
+				"jivecor",
+				"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/js/jive-core.js"
+			],
+			[
+				"init",
+				"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/js/jive-init.js"
+			],
+			[
+				"widge",
+				"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/jive-widgets.less"
+			],
+			[
+				"gridsocia",
+				"src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/utils/gh-layout-modules/gh-grid-social-ui.less"
+			],
+			[
+				"jive",
+				"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/jive-core.less"
+			],
+			[
+				"jiveinit",
+				"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/js/jive-init.js"
+			],
+			[
+				"jiveini",
+				"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/js/jive-init.js"
+			],
+			[
+				"j-core",
+				"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/jive-core.less"
+			],
+			[
+				"jive-ini",
+				"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/js/jive-init.js"
+			],
+			[
+				"jive-init",
+				"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/js/jive-init.js"
+			],
+			[
+				"content",
+				"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/jive-content-page.less"
+			],
+			[
+				"forums",
+				"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/jive-forum-override.less"
+			],
+			[
+				"core.less",
+				"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/jive-core.less"
+			],
+			[
+				"jcore",
+				"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/jive-core.less"
+			],
+			[
+				"srcindexhtm",
+				"node_modules/gulp-less/node_modules/less/test/sourcemaps/index.html"
+			],
+			[
+				"theme",
+				"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/jive-theme-override.less"
+			],
+			[
+				"ghmixi",
+				"src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/utils/gh-mixins.less"
+			],
+			[
+				"ghuti",
+				"src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/gh-utils.less"
+			],
+			[
+				"jive-wid",
+				"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/jive-widgets.less"
+			],
+			[
+				"txt",
+				"gulp/util/txtConcat.js"
+			],
+			[
+				"less.js",
+				"gulp/tasks/less.js"
+			],
+			[
+				"theme.",
+				"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/jive-theme-override.less"
+			],
+			[
+				"package",
+				"package.json"
+			],
+			[
+				"giti",
+				".gitignore"
+			],
+			[
+				"var",
+				"node_modules/gulp-less/test/fixtures/variables.less"
+			],
+			[
+				"varia",
+				"node_modules/gulp-less/test/fixtures/variables.less"
+			],
+			[
+				"footer",
+				"src/etc/designs/atvi/guitarhero/live/clientlibs/common/css/gh-footer.less"
+			],
+			[
+				"jivelibs-v7.less",
+				"src/etc/designs/atvi/guitarhero/live/jivelibs-v7/css/variables.less"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 267.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
