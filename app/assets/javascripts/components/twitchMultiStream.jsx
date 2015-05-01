@@ -1,11 +1,5 @@
 var React = require('react');
 
-var ReactTabs = require('babel!./react-tabs/main.js');
-var Tab = ReactTabs.Tab;
-var Tabs = ReactTabs.Tabs;
-var TabList = ReactTabs.TabList;
-var TabPanel = ReactTabs.TabPanel;
-
 var TwitchSearch = require('babel!./twitchSearch.jsx');
 var TwitchStream = require('babel!./twitchStream.jsx');
 var TwitchChat = require('babel!./twitchChat.jsx');
