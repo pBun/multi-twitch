@@ -20,8 +20,7 @@ module.exports = function(env) {
     },
 
     externals: {
-      'angular': 'angular',
-      'd3': 'd3'
+      'react': 'React'
     },
 
     plugins: [],

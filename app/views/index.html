@@ -10,10 +10,13 @@
 {% endblock %}
 
 {% block content %}
-{% include "shared/twitch-chart/chart.html" %}
+  <main class="main-wrapper">
+    <div id="channel"></div>
+    <span id="channels"></span>
+  </main>
+
 {% endblock %}
 
 {% block javascript %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.js"></script>
 <script src="assets/javascripts/app.js"></script>
 {% endblock %}
