@@ -93,7 +93,7 @@ var Search = React.createClass({
     }.bind(this));
 
     return (
-      <div className="react-search">
+      <div className="twitch-search">
         <input type="text" className="input-text" ref="searchInput" onChange={this.changeInput} />
 
         <div className="menu menu-hidden" ref="autocomplete">

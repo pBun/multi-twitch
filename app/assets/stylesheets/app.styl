@@ -1,7 +1,6 @@
 @import "vendor/normalize";
 @import "vendor/skeleton";
 @import "vendor/loader";
-@import "vendor/search";
 
 /* # Global
 ================================================== */
@@ -35,8 +34,17 @@ a {
   }
 }
 
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
+.embed-container {
+  position: relative;
+  overflow: hidden;
+  iframe, object, embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
 }
 
 .image-wrapper img {
@@ -132,85 +140,150 @@ $mobileMainHeight = 60;
   }
 }
 
+$chatWidth = 300px;
+.multi-stream {
+  padding-right: $chatWidth;
+}
+.streams, .controls {
+  height: 100vh;
+  position: relative;
+  float: left;
+}
+.streams {
+  width: 100%;
+}
+.controls {
+  width: $chatWidth;
+  margin-right: -1*$chatWidth;
+}
+
+/* # Tabs
+================================================== */
+.react-tabs {
+  position: relative;
+  height: 100%;
+}
+
+.react-tabs [role=tablist] {
+  border-bottom: 1px solid #bbb;
+  margin: 0;
+  padding: 0 5px;
+  text-align: left;
+}
+
+.react-tabs [role=tab] {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-bottom: none;
+  bottom: -1px;
+  position: relative;
+  list-style: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 0;
+}
+
+.react-tabs [role=tab][aria-selected=true] {
+  background: #fff;
+  border-color: #bbb;
+  border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+}
+
+.react-tabs [role=tab]:focus {
+  box-shadow: 0 0 5px hsl(208, 99%, 50%);
+  border-color: hsl(208, 99%, 50%);
+  outline: none;
+}
+
+.react-tabs [role=tab]:focus:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  left: -4px;
+  right: -4px;
+  bottom: -5px;
+  background: #fff;
+}
+
+.react-tabs [role=tabpanel] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+.embed-container.stream {
+  height: 0;
+  padding-top: 30px; /* IE6 workaround*/
+  padding-bottom: 56.25%; /* 16/9 ratio */
+}
+.embed-container.stream-chat {
+  padding: 0;
+  height: 100%;
+}
+
 /* # Search
 ================================================== */
-#channel {
-  max-width: 300px;
-  margin: 0 auto;
-}
-
-/* # Control panel
-================================================== */
-
-.controls-trigger,
-.control-panel {
-  position: absolute;
-  top: -($headerHeight / $mainHeight * 100)%;
-  left: 0;
-  @media screen and (max-width: 600px) {
-    top: -($mobileHeaderHeight / $mobileMainHeight * 100)%;
-  }
-}
-.controls-trigger {
-  margin-left: 10px;
-  cursor: pointer;
-  z-index: 999;
-  margin-top: 10px;
-}
-.control-panel {
-  display: inline-block;
-  z-index: 99;
-  padding: 45px 0 10px 0;
-  border: 1px solid #eee;
-  border-width: 0 1px 1px 0;
-  background: #fefefe;
-  border-radius: 0 0 0.5em 0;
-  transform: translateX(-100%);
-  transition: transform 0.2s ease-in;
-  text-align: left;
-  max-width: 100%;
-  width: 265px;
-  &.open {
-    transition-timing-function: ease-out;
-    transform: translateX(0);
-  }
-}
-.control-panel .field {
-  vertical-align: bottom;
-  margin-right: 20px;
-  margin-left: 10px;
-  box-sizing: border-box;
-  margin-bottom: 1.5rem;
-}
-.control-panel .field input {
-  width: 75px;
-  margin: 0;
-}
-.control-panel .button-wrapper {
-  text-align: center;
-  & button {
-    margin-top: 1rem;
-  }
-}
-.control-panel .percent {
-  display: inline-block;
+.twitch-search {
   position: relative;
-  input {
-    padding-right: 30px;
+  margin: 1em;
+  font-size: 150%;
+  font-weight: 200;
+  line-height: 1.5;
+  max-width: 300px;
+}
+
+.twitch-search .input-text {
+  color: #666;
+  padding: 0.4em;
+  width: 100%;
+}
+
+.twitch-search .menu {
+  display: block;
+  line-height: 1.5em;
+  text-decoration: none;
+  white-space: nowrap;
+  width: 100%;
+  position: absolute;
+  &.menu-open {
+    visibility: visible;
+    z-index: 2;
+    background: #fff;
+    border: 1px solid #b7b7b7;
   }
-  &:after {
-    content: '%';
-    display: block;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+  &.menu-hidden {
+    visibility: hidden;
   }
 }
-.control-panel .error {
-  color: #ff0033;
-  margin-right: 20px;
-  margin-left: 10px;
+
+.twitch-search .menu ul {
+  list-style-type: none;
+  padding: 0em;
+  margin: 0em;
+}
+.twitch-search .menu li {
+  margin: 0;
+  transition: background-color 0.2s ease-in-out;
+  a {
+    display: block;
+    padding: 0.5em;
+    transition: color 0.2s ease-in-out;
+    &:hover, &:focus, &:active, &:visited {
+      border-color: transparent;
+    }
+  }
+  &:hover, &:focus, &:active, &:visited {
+    background-color: #6441a5;
+    a {
+      color: #fff;
+    }
+  }
 }
 
 /* # Credits
@@ -238,129 +311,9 @@ $mobileMainHeight = 60;
   }
 }
 
-/* # Explanation
+/* # Streams
 ================================================== */
 
-.explanation {
-  position: absolute;
-  margin: auto;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 56.5%;
-  height: 56.5%;
-  border-radius: 50%;
-  text-align: center;
-  color: #666;
-  pointer-events: none;
-  background: no-repeat;
-  background-size: cover;
-}
-
-// janky style fix for mobile svg rendering sizes
-.is-mobile .explanation {
-  top: -4%;
-  width: 54.5%;
-  height: 54.5%;
-}
-
-.explanation .info {
-  position: absolute;
-  background: rgba(100,65,165,0.85);
-  color: #fefefe;
-  border-radius: 50%;
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  padding: 20% 10%;
-}
-.explanation .info .inner-info {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  margin: 0;
-}
-
-.explanation .info .inner-info .stat {
-  font-size: 2.5em;
-  line-height: 1.25em;
-  display: block;
-}
-
-.explanation .back-info {
-  color: #fff;
-  position: absolute;
-  bottom: 20%;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-.chart-zoomed .explanation .back-info {
-  opacity: 0.5;
-}
-
-.is-mobile .explanation .back-info {
-  display: none;
-}
-
-/* # Chart
-================================================== */
-
-.chart {
-  display: block;
-  position: relative;
-  z-index: 1;
-  margin: 0 auto;
-}
-
-.chart path {
-  stroke: #fff;
-  stroke-width: 0.25;
-  transition: opacity 0.2s ease-in-out;
-  cursor: pointer;
-}
-
-.chart.active path {
-  opacity: 0.3;
-}
-
-.chart.active path.current {
-  opacity: 1;
-}
-
-.chart.zoomed path.game {
-  opacity: 0;
-}
-
-/* # Chart errors
-================================================== */
-
-.chart-errors {
-  position: relative;
-  top: 33%;
-  transform: translateY(-50%);
-}
-
-.chart-errors .api-error {
-  font-size: 1.6em;
-  line-height: 1.2em;
-  &:before {
-    content: 'TWITCH.TV API ERROR =(';
-    font-weight: 600;
-    display: block;
-  }
-  &:after {
-    content: 'Try refreshing.';
-    font-size: 0.8em;
-    margin-top: 1em;
-    display: block;
-  }
+.stream-embed {
+  padding-bottom: 56.25%;
 }
