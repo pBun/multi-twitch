@@ -1,5 +1,4 @@
 var React = require('react');
-var SearchItemInArray = require('./SearchItemInArray.js');
 var TwitchAPI = require('./twitchAPI.js');
 var api = new TwitchAPI();
 
@@ -78,7 +77,8 @@ var Search = React.createClass({
     var autocomplete = this.refs.autocomplete.getDOMNode();
     var result = e.target.innerHTML;
     this.hideMenu();
-    this.refs.searchInput.getDOMNode().value = result;
+    // this.refs.searchInput.getDOMNode().value = result;
+    this.props.addStream(result);
   },
   render: function(){
 

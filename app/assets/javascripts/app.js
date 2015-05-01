@@ -1,12 +1,10 @@
 var React = require('react');
 
-var Search = require('babel!./components/twitchSearch/search.jsx');
-var ITEMS = ['ruby', 'javascript', 'lua', 'go', 'c++', 'julia', 'java', 'c', 'scala','haskell'];
+var TwitchMultiStream = require('babel!./components/twitchMultiStream.jsx');
 
 React.render(
   React.createElement(
-    Search,
-    {items: ITEMS}
+    TwitchMultiStream
   ),
   document.getElementById('channel')
 );
