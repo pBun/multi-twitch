@@ -6,5 +6,5 @@ React.render(
   React.createElement(
     TwitchMultiStream
   ),
-  document.getElementById('channel')
+  document.getElementById('multi-stream')
 );
