@@ -20,8 +20,7 @@ module.exports = function(env) {
     },
 
     externals: {
-      'react': 'React',
-      'lodash': 'lodash'
+      'react': 'React'
     },
 
     plugins: [],

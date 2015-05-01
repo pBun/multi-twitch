@@ -37,6 +37,7 @@ a {
 .embed-container {
   position: relative;
   overflow: hidden;
+  height: 100%;
   iframe, object, embed {
     position: absolute;
     top: 0;
@@ -144,7 +145,7 @@ $chatWidth = 300px;
 .multi-stream {
   padding-right: $chatWidth;
 }
-.streams, .controls {
+.streams, .stream-meta {
   height: 100vh;
   position: relative;
   float: left;
@@ -152,9 +153,11 @@ $chatWidth = 300px;
 .streams {
   width: 100%;
 }
-.controls {
+.stream-meta {
   width: $chatWidth;
-  margin-right: -1*$chatWidth;
+  margin-right: (-1*$chatWidth);
+  box-sizing: border-box;
+  border-left: 1px solid #d1d1d1;
 }
 
 /* # Tabs
@@ -165,7 +168,7 @@ $chatWidth = 300px;
 }
 
 .react-tabs [role=tablist] {
-  border-bottom: 1px solid #bbb;
+  border-bottom: 1px solid #d1d1d1;
   margin: 0;
   padding: 0 5px;
   text-align: left;
@@ -185,20 +188,20 @@ $chatWidth = 300px;
 }
 
 .react-tabs [role=tab][aria-selected=true] {
-  background: #fff;
-  border-color: #bbb;
+  background: #f2f2f2;
+  border-color: #d1d1d1;
   border-radius: 5px 5px 0 0;
   -moz-border-radius: 5px 5px 0 0;
   -webkit-border-radius: 5px 5px 0 0;
 }
 
-.react-tabs [role=tab]:focus {
+.react-tabs [role=tab].active {
   box-shadow: 0 0 5px hsl(208, 99%, 50%);
   border-color: hsl(208, 99%, 50%);
   outline: none;
 }
 
-.react-tabs [role=tab]:focus:after {
+.react-tabs [role=tab].active:after {
   content: "";
   position: absolute;
   height: 5px;
@@ -210,6 +213,7 @@ $chatWidth = 300px;
 
 .react-tabs [role=tabpanel] {
   position: absolute;
+  background: #f2f2f2;
   width: 100%;
   height: 100%;
   display: none;
@@ -217,12 +221,20 @@ $chatWidth = 300px;
     display: block;
   }
 }
-.embed-container.stream {
+
+/* # Stream
+================================================== */
+
+.stream .embed-container {
   height: 0;
   padding-top: 30px; /* IE6 workaround*/
   padding-bottom: 56.25%; /* 16/9 ratio */
 }
-.embed-container.stream-chat {
+
+/* # Stream Chat
+================================================== */
+
+.stream-chat {
   padding: 0;
   height: 100%;
 }
@@ -242,6 +254,7 @@ $chatWidth = 300px;
   color: #666;
   padding: 0.4em;
   width: 100%;
+  margin: 0;
 }
 
 .twitch-search .menu {
@@ -251,11 +264,12 @@ $chatWidth = 300px;
   white-space: nowrap;
   width: 100%;
   position: absolute;
+  margin-top: 0.25em;
   &.menu-open {
     visibility: visible;
     z-index: 2;
     background: #fff;
-    border: 1px solid #b7b7b7;
+    border: 1px solid #d1d1d1;
   }
   &.menu-hidden {
     visibility: hidden;

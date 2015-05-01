@@ -77,7 +77,7 @@ var Search = React.createClass({
     var autocomplete = this.refs.autocomplete.getDOMNode();
     var result = e.target.innerHTML;
     this.hideMenu();
-    // this.refs.searchInput.getDOMNode().value = result;
+    this.refs.searchInput.getDOMNode().value = '';
     this.props.addStream(result);
   },
   render: function(){
@@ -94,7 +94,7 @@ var Search = React.createClass({
 
     return (
       <div className="twitch-search">
-        <input type="text" className="input-text" ref="searchInput" onChange={this.changeInput} />
+        <input type="text" className="input-text" ref="searchInput" placeholder="Search" onChange={this.changeInput} />
 
         <div className="menu menu-hidden" ref="autocomplete">
           <ul>

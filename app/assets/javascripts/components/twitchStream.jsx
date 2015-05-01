@@ -1,14 +1,26 @@
 var React = require('react');
+var ReactSWF = require('./react-swf');
 
 var twitchStream = React.createClass({
 
   render: function() {
 
-    var embedUrl = this.props.stream.channel.url + '/embed';
+    var embedId = 'embed-' + this.props.stream.channel.name;
 
     return (
-      <div className="stream embed-container">
-        <iframe src={embedUrl} frameborder="0" scrolling="no"></iframe>
+      <div className="stream">
+        <div className="embed-container">
+          <ReactSWF
+            src = "//www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf"
+            id = {embedId}
+            wmode = "transparent"
+            flashVars = {{
+              embed: 1,
+              channel: this.props.stream.channel.name,
+              auto_play: 'true'
+            }}
+          />
+        </div>
       </div>
     );
   }
