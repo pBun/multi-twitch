@@ -48,7 +48,7 @@ var Search = React.createClass({
   /**
    * Input box text has changed, trigger update of the autocomplete box.
   **/
-  changeInput: function () {
+  changeInput: function() {
     var autocomplete = this.refs.autocomplete.getDOMNode();
     var searchValue = this.refs.searchInput.getDOMNode().value;
 
@@ -73,19 +73,43 @@ var Search = React.createClass({
     });
 
   },
-  selectAutoComplete: function (e) {
-    var autocomplete = this.refs.autocomplete.getDOMNode();
+  keyInput: function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      var focus = this.state.focus;
+      if (!focus) {
+        var startNum = e.key === 'ArrowDown' ? 0 : this.state.matchingItems.length -1;
+        focus = this.state.matchingItems[startNum];
+      } else {
+        var mod = e.key === 'ArrowDown' ? 1 : -1;
+        focus = this.state.matchingItems[this.state.matchingItems.indexOf(focus) + mod];
+      }
+      this.setState({focus: focus});
+    }
+    if (e.key === 'Enter') {
+      this.selectAutoComplete(this.state.focus);
+    }
+  },
+  clickAutoComplete: function(e) {
     var result = e.target.innerHTML;
+    this.selectAutoComplete(result);
+  },
+  focusAutoComplete: function(e) {
+    var result = e.target.innerHTML;
+    this.setState({focus: result});
+  },
+  selectAutoComplete: function(item) {
+    var autocomplete = this.refs.autocomplete.getDOMNode();
     this.hideMenu();
     this.refs.searchInput.getDOMNode().value = '';
-    this.props.addStream(result);
+    this.props.addStream(item);
   },
   render: function(){
 
-    var items = this.state.matchingItems.map(function (item) {
+    var items = this.state.matchingItems.map(function(item) {
       return (
-        <li>
-          <a onClick={this.selectAutoComplete}>
+        <li className={this.state.focus === item ? 'focus' : ''}>
+          <a onClick={this.clickAutoComplete} onMouseOver={this.focusAutoComplete} onFocus={this.focusAutoComplete}>
             {item}
           </a>
         </li>
@@ -94,7 +118,12 @@ var Search = React.createClass({
 
     return (
       <div className="twitch-search">
-        <input type="text" className="input-text" ref="searchInput" placeholder="Search" onChange={this.changeInput} />
+        <input type="text"
+          className="input-text"
+          ref="searchInput"
+          placeholder="Search"
+          onKeyDown={this.keyInput}
+          onChange={this.changeInput} />
 
         <div className="menu menu-hidden" ref="autocomplete">
           <ul>
