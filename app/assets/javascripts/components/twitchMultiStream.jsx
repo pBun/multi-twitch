@@ -11,13 +11,18 @@ var twitchMultiStream = React.createClass({
     var streams = [];
     var propStreams = this.props.streams;
 
-    propStreams.forEach((stream) => {
-      streams.push({name: stream});
+    propStreams.forEach((stream, i) => {
+      streams.push({
+        id: Date.now() + i,
+        name: stream
+      });
     });
 
+    var defaultWidth = streams.length <= 2 ? 100 : streams.length <= 4 ? 50 : streams.length <= 9 ? 33 : 25;
     return {
       streams: streams,
-      activeStream: streams[0]
+      activeStream: streams[0],
+      defaultWidth: defaultWidth
     }
   },
 
@@ -37,22 +42,32 @@ var twitchMultiStream = React.createClass({
     var urlStreams = window.location.hash.replace('#', '');
     urlStreams = urlStreams ? urlStreams.split('&') : [];
     var streams = [];
-    urlStreams.forEach((stream) => {
-      streams.push({name: stream});
+    urlStreams.forEach((stream, i) => {
+      streams.push({
+        id: Date.now() + i,
+        name: stream
+      });
     });
+    var defaultWidth = streams.length <= 2 ? 100 : streams.length <= 4 ? 50 : streams.length <= 9 ? 33 : 25;
     this.setState({
       streams: streams,
-      activeStream: streams[0]
+      activeStream: streams[0],
+      defaultWidth: defaultWidth
     });
   },
 
   addStream: function(stream) {
     var activeStream = this.state.activeStream;
     var streams = this.state.streams.slice();
-    streams.push({name: stream});
+    streams.push({
+      id: Date.now(),
+      name: stream
+    });
+    var defaultWidth = streams.length <= 2 ? 100 : streams.length <= 4 ? 50 : streams.length <= 9 ? 33 : 25;
     this.setState({
       streams: streams,
-      activeStream: activeStream || streams[0]
+      activeStream: activeStream || streams[0],
+      defaultWidth: defaultWidth
     });
   },
 
@@ -64,37 +79,60 @@ var twitchMultiStream = React.createClass({
     var activeStream = this.state.activeStream;
     var streams = this.state.streams.slice();
     streams.splice(streamIndex, 1);
+    var defaultWidth = streams.length <= 2 ? 100 : streams.length <= 4 ? 50 : streams.length <= 9 ? 33 : 25;
     this.setState({streams: []}); //hack for buggy twitch
     setTimeout(() => { //hack for buggy twitch
       this.setState({
         streams: streams,
         activeStream: activeStream != stream ? activeStream :
-          streams.length ? streams[0] : null
+          streams.length ? streams[0] : null,
+        defaultWidth: defaultWidth
       });
     }, 0);
+  },
+
+  updateStreamSize: function(stream, e) {
+    var streams = this.state.streams.slice();
+    streams.forEach((s) => {
+      if (s.id === stream.id) {
+        stream.width = e.target.value;
+      }
+    });
+    this.setState({
+      streams: streams
+    });
+  },
+
+  toggleControls: function() {
+    this.setState({
+      controlsOpen: !this.state.controlsOpen
+    });
   },
 
   render: function() {
 
     var streams = this.state.streams.map((item) => {
       return (
-        <TwitchStream stream={item} />
+        <TwitchStream stream={item} defaultWidth={this.state.defaultWidth} />
       );
     });
 
     var streamControls = this.state.streams.map((item) => {
       return (
         <div className="stream-controls">
+          <!--<input type="number" min="0" max="100" step="0.1" value={item.width} onChange={this.updateStreamSize.bind(this, item)} />-->
           <a className="close" onClick={this.removeStream.bind(this, item)}>Close {item.name}</a>
         </div>
       );
     });
 
+    var controlsClasses = this.state.controlsOpen ? 'controls open' : 'controls closed';
     return (
       <div className="multi-stream">
-        <div className="controls">
+        <div className={controlsClasses}>
           <TwitchSearch streams={this.state.streams} addStream={this.addStream} />
           {streamControls}
+          <a className="control-toggle" onClick={this.toggleControls}>Toggle controls</a>
         </div>
         <div className="streams">
           {streams}

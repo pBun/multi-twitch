@@ -105,6 +105,7 @@ $chatWidth = 300px;
 }
 .streams {
   width: 100%;
+  padding-left: 30px;
 }
 .stream-meta {
   position: fixed;
@@ -189,7 +190,9 @@ $chatWidth = 300px;
 
 /* # Stream
 ================================================== */
-
+.stream {
+  float: left;
+}
 .stream .embed-container {
   height: 0;
   padding-top: 30px; /* IE6 workaround*/
@@ -263,6 +266,32 @@ $chatWidth = 300px;
       color: #fff;
     }
   }
+}
+
+/* # Controls
+================================================== */
+
+.controls {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: #fff;
+  height: 100vh;
+  border-right: 1px solid #d1d1d1;
+  transition: transform 0.3s;
+  &.closed {
+    transform: translateX(-100%);
+  }
+}
+
+.controls .control-toggle {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background: #d1d1d1;
+  height: 100%;
+  width: 30px;
 }
 
 /* # Credits
