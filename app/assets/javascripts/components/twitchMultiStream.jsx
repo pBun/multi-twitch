@@ -31,15 +31,21 @@ var twitchMultiStream = React.createClass({
   },
 
   removeStream: function(stream) {
+    var streamIndex = this.state.streams.indexOf(stream);
+    if (streamIndex < 0) {
+      return;
+    }
     var activeStream = this.state.activeStream;
     var streams = this.state.streams.slice();
-    var streamIndex = streams.indexOf(stream);
     streams.splice(streamIndex, 1);
-    this.setState({
-      streams: streams,
-      activeStream: activeStream != stream ? activeStream :
-        streams.length ? streams[0] : null
-    });
+    this.setState({streams: []}); //hack for buggy twitch
+    setTimeout(() => { //hack for buggy twitch
+      this.setState({
+        streams: streams,
+        activeStream: activeStream != stream ? activeStream :
+          streams.length ? streams[0] : null
+      });
+    }, 0);
   },
 
   render: function() {
