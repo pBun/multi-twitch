@@ -2,34 +2,57 @@ var React = require('react');
 
 var TwitchSearch = require('babel!./twitchSearch.jsx');
 var TwitchStream = require('babel!./twitchStream.jsx');
-var TwitchChat = require('babel!./twitchChat.jsx');
-var TwitchAPI = require('./twitchAPI.js');
-var api = new TwitchAPI();
+var TwitchChatWrapper = require('babel!./twitchChatWrapper.jsx');
 
 var twitchMultiStream = React.createClass({
 
   getInitialState: function() {
+
+    var streams = [];
+    var propStreams = this.props.streams;
+
+    propStreams.forEach((stream) => {
+      streams.push({name: stream});
+    });
+
     return {
-      streams: []
+      streams: streams,
+      activeStream: streams[0]
     }
+  },
+
+  componentDidMount: function() {
+    window.addEventListener('hashchange', this.hashchangeHandler);
+  },
+
+  componentWillUnmount: function() {
+    window.removeEventListener('hashchange', this.hashchangeHandler);
   },
 
   setActiveStream: function(stream) {
     this.setState({activeStream: stream});
   },
 
+  hashchangeHandler: function(e) {
+    var urlStreams = window.location.hash.replace('#', '');
+    urlStreams = urlStreams ? urlStreams.split('&') : [];
+    var streams = [];
+    urlStreams.forEach((stream) => {
+      streams.push({name: stream});
+    });
+    this.setState({
+      streams: streams,
+      activeStream: streams[0]
+    });
+  },
+
   addStream: function(stream) {
     var activeStream = this.state.activeStream;
     var streams = this.state.streams.slice();
-    api.get('channels/' + stream).then((data) => {
-      if (!data) {
-        return;
-      }
-      streams.push(data);
-      this.setState({
-        streams: streams,
-        activeStream: activeStream || streams[0]
-      });
+    streams.push({name: stream});
+    this.setState({
+      streams: streams,
+      activeStream: activeStream || streams[0]
     });
   },
 
@@ -59,34 +82,6 @@ var twitchMultiStream = React.createClass({
       );
     });
 
-    var chatTabs = this.state.streams.map((item) => {
-      let isActive = item === this.state.activeStream;
-      return (
-        <div role="tab"
-          className={isActive ? 'active' : 'inactive'}
-          aria-selected={isActive ? 'true' : 'false'}
-          aria-expanded={isActive ? 'true' : 'false'}
-          >
-          <a className="tab-inner" onClick={this.setActiveStream.bind(this, item)}>{item.display_name}</a>
-          <a className="close" onClick={this.removeStream.bind(this, item)}>close</a>
-        </div>
-      );
-    });
-
-    var chatPanels = this.state.streams.map((item) => {
-      let isActive = item === this.state.activeStream;
-      return (
-        <div role="tabpanel"
-          className={isActive ? 'active' : 'inactive'}
-          >
-          <div className="controls">
-            <a className="close" onClick={this.removeStream.bind(this, item)}>close</a>
-          </div>
-          <TwitchChat stream={item} />
-        </div>
-      );
-    });
-
     return (
       <div className="multi-stream">
         <div className="streams">
@@ -94,12 +89,11 @@ var twitchMultiStream = React.createClass({
         </div>
         <div className="stream-meta">
           <TwitchSearch streams={this.state.streams} addStream={this.addStream} />
-          <div className="react-tabs">
-            <ul role="tablist">
-              {chatTabs}
-            </ul>
-            {chatPanels}
-          </div>
+          <TwitchChatWrapper
+            streams={this.state.streams}
+            activeStream={this.state.activeStream}
+            setActiveStream={this.setActiveStream}
+            removeStream={this.removeStream} />
         </div>
       </div>
     );
