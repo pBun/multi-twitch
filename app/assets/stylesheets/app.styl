@@ -10,7 +10,6 @@ html, body {
 }
 
 body {
-  transform: translateZ(0);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   color: #32323e;
@@ -154,8 +153,10 @@ $chatWidth = 300px;
   width: 100%;
 }
 .stream-meta {
+  position: fixed;
+  top: 0;
+  right: 0;
   width: $chatWidth;
-  margin-right: (-1*$chatWidth);
   box-sizing: border-box;
   border-left: 1px solid #d1d1d1;
 }
