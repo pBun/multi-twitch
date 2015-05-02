@@ -150,7 +150,7 @@ var Search = React.createClass({
         <input type="text"
           className="input-text"
           ref="searchInput"
-          placeholder="Chanel name"
+          placeholder="Channel name"
           onKeyDown={this.keyInput}
           onChange={this.changeInput} />
 
