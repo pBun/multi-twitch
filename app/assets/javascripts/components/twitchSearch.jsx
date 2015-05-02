@@ -25,7 +25,6 @@ var Search = React.createClass({
   getInitialState: function(){
      return {
        api: new TwitchAPI(),
-       items:  this.props.items,
        matchingItems: [],
        searchValue: ''
      }
@@ -36,7 +35,7 @@ var Search = React.createClass({
   },
   hideMenu: function() {
     var autocomplete = this.refs.autocomplete.getDOMNode();
-    this.setState({matchingItems: []});
+    this.setState({matchingItems: [], focus: null});
     removeClass(autocomplete, 'menu-open');
     addClass(autocomplete, 'menu-hidden');
   },
@@ -45,10 +44,8 @@ var Search = React.createClass({
     removeClass(autocomplete, 'menu-hidden');
     addClass(autocomplete, 'menu-open');
   },
-  /**
-   * Input box text has changed, trigger update of the autocomplete box.
-  **/
-  changeInput: function() {
+
+  update: function() {
     var autocomplete = this.refs.autocomplete.getDOMNode();
     var searchValue = this.refs.searchInput.getDOMNode().value;
 
@@ -69,11 +66,20 @@ var Search = React.createClass({
         this.showMenu();
       }
 
-      this.setState({items: suggestions, matchingItems: suggestions});
+      this.setState({matchingItems: suggestions});
     });
+  },
+
+  /**
+   * Input box text has changed, trigger update of the autocomplete box.
+  **/
+  changeInput: function() {
+
 
   },
+
   keyInput: function(e) {
+
     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
       e.preventDefault();
       var focus = this.state.focus;
@@ -84,11 +90,23 @@ var Search = React.createClass({
         var mod = e.key === 'ArrowDown' ? 1 : -1;
         focus = this.state.matchingItems[this.state.matchingItems.indexOf(focus) + mod];
       }
+      this.refs.searchInput.getDOMNode().value = focus || '';
       this.setState({focus: focus});
+      return;
     }
+
     if (e.key === 'Enter') {
-      this.selectAutoComplete(this.state.focus);
+      this.selectAutoComplete(this.state.focus || this.refs.searchInput.getDOMNode().value);
+      return;
     }
+
+    if (e.key === 'Escape') {
+      this.hideMenu();
+      return;
+    } else {
+      this.update();
+    }
+
   },
   clickAutoComplete: function(e) {
     var result = e.target.innerHTML;
@@ -121,7 +139,7 @@ var Search = React.createClass({
         <input type="text"
           className="input-text"
           ref="searchInput"
-          placeholder="Search"
+          placeholder="Chanel name"
           onKeyDown={this.keyInput}
           onChange={this.changeInput} />
 
