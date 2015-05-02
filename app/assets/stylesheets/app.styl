@@ -86,58 +86,12 @@ a {
   }
 }
 
-/* # Header
-================================================== */
-
-.header {
-  text-align: center;
-  h1 {
-    margin-bottom: 0;
-  }
-  .logo {
-    font-weight: 100;
-    &:hover, &:focus {
-      border-color: transparent;
-    }
-  }
-}
-
 /* # General layout
 ================================================== */
 
-$headerHeight = 15;
-$mainHeight = 80;
-$mobileHeaderHeight = 30;
-$mobileMainHeight = 60;
-
-.header {
-  height: ($headerHeight)%;
-  .header-inner {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-}
-
 .main-wrapper {
   position: relative;
-  height: ($mainHeight)%;
   text-align: center;
-}
-.games {
-  position: relative;
-  display: inline-block;
-  min-height: 320px;
-  min-width: 320px;
-}
-@media screen and (max-width: 600px) {
-  .header {
-    height: ($mobileHeaderHeight)%;
-    box-sizing: border-box;
-  }
-  .main-wrapper {
-    height: ($mobileMainHeight)%;
-  }
 }
 
 $chatWidth = 300px;
