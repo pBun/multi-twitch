@@ -117,15 +117,19 @@ $chatWidth = 300px;
 
 /* # Tabs
 ================================================== */
+.chat-panels {
+  position: relative;
+}
 .react-tabs {
   position: relative;
   height: 100%;
+  background-color: #d1d1d1;
 }
 
 .react-tabs [role=tablist] {
   border-bottom: 1px solid #d1d1d1;
   margin: 0;
-  padding: 0 5px;
+  padding: 0;
   text-align: left;
 }
 
@@ -162,27 +166,14 @@ $chatWidth = 300px;
 }
 
 .react-tabs [role=tab][aria-selected=true] {
-  background: #f2f2f2;
+  background: #d1d1d1;
   border-color: #d1d1d1;
-  border-radius: 5px 5px 0 0;
-  -moz-border-radius: 5px 5px 0 0;
-  -webkit-border-radius: 5px 5px 0 0;
+  font-weight: 600;
+  // border-radius: 5px 5px 0 0;
 }
 
 .react-tabs [role=tab].active {
-  box-shadow: 0 0 5px hsl(208, 99%, 50%);
-  border-color: hsl(208, 99%, 50%);
   outline: none;
-}
-
-.react-tabs [role=tab].active:after {
-  content: "";
-  position: absolute;
-  height: 5px;
-  left: -4px;
-  right: -4px;
-  bottom: -5px;
-  background: #fff;
 }
 
 .react-tabs [role=tabpanel] {

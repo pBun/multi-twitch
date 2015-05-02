@@ -3,6 +3,27 @@ var TwitchChat = require('babel!./twitchChat.jsx');
 
 var twitchChatWrapper = React.createClass({
 
+  componentDidUpdate: function() {
+    this.updateChatSize();
+  },
+
+  componentDidMount: function() {
+    this.updateChatSize();
+    window.addEventListener('resize', this.updateChatSize);
+  },
+
+  componentWillUnmount: function() {
+    window.removeEventListener('resize', this.updateChatSize);
+  },
+
+  updateChatSize: function() {
+    var chatWrapper = this.refs.chatWrapper.getDOMNode();
+    var chatPanels = this.refs.chatPanels.getDOMNode();
+    var chatTabs = this.refs.chatTabs.getDOMNode();
+    var newHeight = chatWrapper.clientHeight - chatTabs.offsetHeight;
+    chatPanels.style.height = newHeight + 'px';
+  },
+
   render: function() {
 
     var chatTabs = this.props.streams.map((item) => {
@@ -14,7 +35,6 @@ var twitchChatWrapper = React.createClass({
           aria-expanded={isActive ? 'true' : 'false'}
           >
           <a className="tab-inner" onClick={this.props.setActiveStream.bind(this, item)}>{item.name}</a>
-          <a className="close" onClick={this.props.removeStream.bind(this, item)}>close</a>
         </div>
       );
     });
@@ -25,20 +45,19 @@ var twitchChatWrapper = React.createClass({
         <div role="tabpanel"
           className={isActive ? 'active' : 'inactive'}
           >
-          <div className="controls">
-            <a className="close" onClick={this.props.removeStream.bind(this, item)}>close</a>
-          </div>
           <TwitchChat stream={item} />
         </div>
       );
     });
 
     return (
-      <div className="react-tabs">
-        <ul role="tablist">
+      <div className="react-tabs" ref="chatWrapper">
+        <div className="chat-panels" ref="chatPanels">
+          {chatPanels}
+        </div>
+        <ul role="tablist" ref="chatTabs">
           {chatTabs}
         </ul>
-        {chatPanels}
       </div>
     );
   }

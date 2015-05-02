@@ -82,18 +82,28 @@ var twitchMultiStream = React.createClass({
       );
     });
 
+    var streamControls = this.state.streams.map((item) => {
+      return (
+        <div className="stream-controls">
+          <a className="close" onClick={this.removeStream.bind(this, item)}>Close {item.name}</a>
+        </div>
+      );
+    });
+
     return (
       <div className="multi-stream">
+        <div className="controls">
+          <TwitchSearch streams={this.state.streams} addStream={this.addStream} />
+          {streamControls}
+        </div>
         <div className="streams">
           {streams}
         </div>
         <div className="stream-meta">
-          <TwitchSearch streams={this.state.streams} addStream={this.addStream} />
           <TwitchChatWrapper
             streams={this.state.streams}
             activeStream={this.state.activeStream}
-            setActiveStream={this.setActiveStream}
-            removeStream={this.removeStream} />
+            setActiveStream={this.setActiveStream} />
         </div>
       </div>
     );

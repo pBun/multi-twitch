@@ -2,25 +2,6 @@ var React = require('react');
 
 var twitchChat = React.createClass({
 
-  componentDidUpdate: function() {
-    this.updateChatSize();
-  },
-
-  componentDidMount: function() {
-    this.updateChatSize();
-    window.addEventListener('resize', this.updateChatSize);
-  },
-
-  componentWillUnmount: function() {
-    window.removeEventListener('resize', this.updateChatSize);
-  },
-
-  updateChatSize: function() {
-    var twitchChat = this.refs.twitchChat.getDOMNode();
-    var newHeight = window.innerHeight - twitchChat.getBoundingClientRect().top;
-    twitchChat.style.height = newHeight + 'px';
-  },
-
   render: function() {
 
     var chatUrl = 'http://twitch.tv/' + this.props.stream.name + '/chat?popout=';
