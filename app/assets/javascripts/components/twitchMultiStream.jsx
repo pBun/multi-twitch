@@ -21,8 +21,11 @@ var twitchMultiStream = React.createClass({
   addStream: function(stream) {
     var activeStream = this.state.activeStream;
     var streams = this.state.streams.slice();
-    api.get('streams/' + stream).then((data) => {
-      streams.push(data.stream);
+    api.get('channels/' + stream).then((data) => {
+      if (!data) {
+        return;
+      }
+      streams.push(data);
       this.setState({
         streams: streams,
         activeStream: activeStream || streams[0]
@@ -64,7 +67,7 @@ var twitchMultiStream = React.createClass({
           aria-selected={isActive ? 'true' : 'false'}
           aria-expanded={isActive ? 'true' : 'false'}
           >
-          <a className="tab-inner" onClick={this.setActiveStream.bind(this, item)}>{item.channel.display_name}</a>
+          <a className="tab-inner" onClick={this.setActiveStream.bind(this, item)}>{item.display_name}</a>
           <a className="close" onClick={this.removeStream.bind(this, item)}>close</a>
         </div>
       );

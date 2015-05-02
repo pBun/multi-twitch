@@ -5,7 +5,7 @@ var twitchStream = React.createClass({
 
   render: function() {
 
-    var embedId = 'embed-' + this.props.stream.channel.name;
+    var embedId = 'embed-' + this.props.stream.name;
 
     return (
       <div className="stream">
@@ -16,7 +16,7 @@ var twitchStream = React.createClass({
             wmode = "transparent"
             flashVars = {{
               embed: 1,
-              channel: this.props.stream.channel.name,
+              channel: this.props.stream.name,
               auto_play: 'true'
             }}
           />

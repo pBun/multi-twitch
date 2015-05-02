@@ -23,7 +23,7 @@ var twitchChat = React.createClass({
 
   render: function() {
 
-    var chatUrl = this.props.stream.channel.url + '/chat?popout=';
+    var chatUrl = this.props.stream.url + '/chat?popout=';
 
     return (
       <div className="stream-chat embed-container" ref="twitchChat">

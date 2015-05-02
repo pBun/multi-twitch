@@ -35,6 +35,7 @@ var Search = React.createClass({
   },
   hideMenu: function() {
     var autocomplete = this.refs.autocomplete.getDOMNode();
+    this.props.currentSearch = null;
     this.setState({matchingItems: [], focus: null});
     removeClass(autocomplete, 'menu-open');
     addClass(autocomplete, 'menu-hidden');
@@ -46,28 +47,37 @@ var Search = React.createClass({
   },
 
   update: function() {
-    var autocomplete = this.refs.autocomplete.getDOMNode();
-    var searchValue = this.refs.searchInput.getDOMNode().value;
 
-    if (!searchValue) {
-      this.hideMenu();
-      return;
-    }
+    clearTimeout(this.props.searchTimeout);
+    this.props.searchTimeout = setTimeout(() => {
 
-    api.get('search/streams', {'query': searchValue}).then((data) => {
-      var suggestions = [];
-      for (var stream of data.streams) {
-        suggestions.push(stream.channel.name);
-      }
+      this.props.currentSearch = this.refs.searchInput.getDOMNode().value;
 
-      if (!suggestions.length) {
+      if (!this.props.currentSearch) {
         this.hideMenu();
-      } else {
-        this.showMenu();
+        return;
       }
 
-      this.setState({matchingItems: suggestions});
-    });
+      api.get('search/channels', {'query': this.props.currentSearch}).then((data) => {
+
+        if (!this.props.currentSearch) {
+          return;
+        }
+
+        var suggestions = [];
+        for (var stream of data.channels) {
+          suggestions.push(stream.name);
+        }
+
+        if (!suggestions.length) {
+          this.hideMenu();
+        } else {
+          this.showMenu();
+        }
+
+        this.setState({matchingItems: suggestions});
+      });
+    }, 300)
   },
 
   /**
@@ -117,6 +127,7 @@ var Search = React.createClass({
     this.setState({focus: result});
   },
   selectAutoComplete: function(item) {
+    this.props.currentSearch = null;
     var autocomplete = this.refs.autocomplete.getDOMNode();
     this.hideMenu();
     this.refs.searchInput.getDOMNode().value = '';
