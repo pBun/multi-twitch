@@ -111,13 +111,29 @@ var twitchMultiStream = React.createClass({
 
   render: function() {
 
-    var streams = this.state.streams.map((item) => {
+    var streams = this.state.streams;
+    var numTwitchBlocks = streams.length + 1;
+    var twitchBlockWidth = numTwitchBlocks <= 2 ? 100 : numTwitchBlocks <= 4 ? 50 : numTwitchBlocks <= 9 ? 33.3333 : 25;
+    var twitchBlocks = streams.map((item) => {
       return (
-        <TwitchStream stream={item} defaultWidth={this.state.defaultWidth} />
+        <div className="twitch-block" style={{width: twitchBlockWidth + '%'}}>
+          <TwitchStream stream={item} />
+        </div>
       );
     });
+    twitchBlocks.push(
+      <div className="twitch-block" style={{width: twitchBlockWidth + '%'}}>
+        <div className="twitch-block-inner">
+          <TwitchChatWrapper
+            streams={this.state.streams}
+            activeStream={this.state.activeStream}
+            setActiveStream={this.setActiveStream} />
+        </div>
+      </div>
+    );
 
-    var streamControls = this.state.streams.map((item) => {
+
+    var streamControls = streams.map((item) => {
       return (
         <div className="stream-controls">
           <!--<input type="number" min="0" max="100" step="0.1" value={item.width} onChange={this.updateStreamSize.bind(this, item)} />-->
@@ -135,13 +151,7 @@ var twitchMultiStream = React.createClass({
           <a className="control-toggle" onClick={this.toggleControls}>Toggle controls</a>
         </div>
         <div className="streams">
-          {streams}
-        </div>
-        <div className="stream-meta">
-          <TwitchChatWrapper
-            streams={this.state.streams}
-            activeStream={this.state.activeStream}
-            setActiveStream={this.setActiveStream} />
+          {twitchBlocks}
         </div>
       </div>
     );

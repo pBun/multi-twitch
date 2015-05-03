@@ -7,10 +7,8 @@ var twitchStream = React.createClass({
 
     var embedId = 'embed-' + this.props.stream.name;
 
-    console.log(this.props.stream.width);
-
     return (
-      <div className="stream" style={{width: (this.props.stream.width || this.props.defaultWidth || 100) + '%'}}>
+      <div className="stream">
         <div className="embed-container">
           <ReactSWF
             src = "//www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf"

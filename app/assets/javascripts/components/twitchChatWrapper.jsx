@@ -29,13 +29,13 @@ var twitchChatWrapper = React.createClass({
     var chatTabs = this.props.streams.map((item) => {
       let isActive = item === this.props.activeStream;
       return (
-        <div role="tab"
+        <li role="tab"
           className={isActive ? 'active' : 'inactive'}
           aria-selected={isActive ? 'true' : 'false'}
           aria-expanded={isActive ? 'true' : 'false'}
           >
           <a className="tab-inner" onClick={this.props.setActiveStream.bind(this, item)}>{item.name}</a>
-        </div>
+        </li>
       );
     });
 
@@ -51,13 +51,13 @@ var twitchChatWrapper = React.createClass({
     });
 
     return (
-      <div className="react-tabs" ref="chatWrapper">
-        <div className="chat-panels" ref="chatPanels">
-          {chatPanels}
-        </div>
+      <div className="twitch-chat" ref="chatWrapper">
         <ul role="tablist" ref="chatTabs">
           {chatTabs}
         </ul>
+        <div className="chat-panels" ref="chatPanels">
+          {chatPanels}
+        </div>
       </div>
     );
   }
