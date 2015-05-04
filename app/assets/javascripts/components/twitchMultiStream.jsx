@@ -142,14 +142,14 @@ var twitchMultiStream = React.createClass({
       );
     });
 
-    var controlsClasses = ClassSet({
-      'controls': true,
-      'open': this.state.controlsOpen,
-      'closed': !this.state.controlsOpen
+    var multiStreamClasses = ClassSet({
+      'multi-stream': true,
+      'menu-open': this.state.controlsOpen,
+      'menu-closed': !this.state.controlsOpen
     });
     return (
-      <div className="multi-stream">
-        <div className={controlsClasses}>
+      <div className={multiStreamClasses}>
+        <div className="controls">
           <TwitchSearch streams={this.state.streams} addStream={this.addStream} />
           {streamControls}
           <a className="control-toggle" onClick={this.toggleControls}>Toggle controls</a>

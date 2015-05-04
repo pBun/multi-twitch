@@ -98,7 +98,6 @@ a {
   height: 100vh;
   position: relative;
   width: 100%;
-  padding-left: 30px;
   box-sizing: border-box;
 }
 .stream-meta {
@@ -222,7 +221,7 @@ a {
 ================================================== */
 .twitch-search {
   position: relative;
-  margin: 1em;
+  margin: 0.5em 1em 1em;
   font-size: 150%;
   font-weight: 200;
   line-height: 1.5;
@@ -282,27 +281,74 @@ a {
 /* # Controls
 ================================================== */
 
+$menuOpenWidth = 300px;
+$menuToggleWidth = 30px;
+$menuBg = lighten(#6441a5, 80%);
+
+.streams {
+  // padding-left: $menuOpenWidth + $menuToggleWidth;
+  // transition: padding-left 0.3s;
+  padding-left: $menuToggleWidth;
+}
+
 .controls {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 999;
-  background: #fff;
+  background: $menuBg;
   height: 100vh;
+  width: $menuOpenWidth;
   border-right: 1px solid #d1d1d1;
   transition: transform 0.3s;
-  &.closed {
-    transform: translateX(-100%);
-  }
+  padding-top: 35px;
+  box-sizing: border-box;
 }
 
 .controls .control-toggle {
   position: absolute;
   top: 0;
   left: 100%;
-  background: #d1d1d1;
+  color: #d1d1d1;
+  background: #6441a5;
   height: 100%;
-  width: 30px;
+  width: $menuToggleWidth;
+  cursor: pointer;
+  font-size: 0;
+}
+
+.controls .control-toggle:after {
+  content: '+';
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+
+  font-size: 34px;
+  width: 100%;
+  text-align: center;
+  color: $menuBg;
+  font-weight: 400;
+
+}
+
+.controls .control-toggle:before {
+  content: 'x';
+  position: absolute;
+  top: 0;
+  right: 100%;
+  font-size: 28px;
+  padding: 0.25em;
+  color: #6441a5;
+}
+
+.menu-closed {
+  .controls  {
+    transform: translateX(-100%);
+  }
+  .streams {
+    padding-left: $menuToggleWidth;
+  }
 }
 
 /* # Credits
