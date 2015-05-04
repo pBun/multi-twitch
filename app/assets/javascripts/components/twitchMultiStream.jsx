@@ -150,6 +150,7 @@ var twitchMultiStream = React.createClass({
     return (
       <div className={multiStreamClasses}>
         <div className="controls">
+          <h1>Multi Twitch</h1>
           <TwitchSearch streams={this.state.streams} addStream={this.addStream} />
           {streamControls}
           <a className="control-toggle" onClick={this.toggleControls}>Toggle controls</a>
