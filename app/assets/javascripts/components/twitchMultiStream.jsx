@@ -1,4 +1,5 @@
 var React = require('react');
+var ClassSet = React.addons.classSet;
 
 var TwitchSearch = require('babel!./twitchSearch.jsx');
 var TwitchStream = require('babel!./twitchStream.jsx');
@@ -136,13 +137,16 @@ var twitchMultiStream = React.createClass({
     var streamControls = streams.map((item) => {
       return (
         <div className="stream-controls">
-          <!--<input type="number" min="0" max="100" step="0.1" value={item.width} onChange={this.updateStreamSize.bind(this, item)} />-->
           <a className="close" onClick={this.removeStream.bind(this, item)}>Close {item.name}</a>
         </div>
       );
     });
 
-    var controlsClasses = this.state.controlsOpen ? 'controls open' : 'controls closed';
+    var controlsClasses = ClassSet({
+      'controls': true,
+      'open': this.state.controlsOpen,
+      'closed': !this.state.controlsOpen
+    });
     return (
       <div className="multi-stream">
         <div className={controlsClasses}>
