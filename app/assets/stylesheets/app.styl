@@ -109,7 +109,33 @@ a {
   border-left: 1px solid #d1d1d1;
 }
 
-/* # Tabs
+/* # Chat Layouts
+================================================== */
+
+$sideChatWidth = 300px;
+.chat-side {
+  .streams {
+    padding-right: $sideChatWidth;
+  }
+  .twitch-block.chat {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: $sideChatWidth !important;
+    .twitch-block-inner {
+      padding: 0;
+      height: 100%;
+    }
+  }
+}
+.chat-hidden {
+  .twitch-block.chat {
+    display: none;
+  }
+}
+
+/* # Chat
 ================================================== */
 .chat-panels {
   position: relative;
@@ -219,14 +245,6 @@ a {
 
 /* # Search
 ================================================== */
-.twitch-search {
-  position: relative;
-  margin: 0.5em 1em 1em;
-  font-size: 150%;
-  font-weight: 200;
-  line-height: 1.5;
-  max-width: 300px;
-}
 
 .twitch-search .input-text {
   color: #666;
@@ -286,9 +304,48 @@ $menuToggleWidth = 30px;
 $menuBg = lighten(#6441a5, 80%);
 
 .streams {
-  // padding-left: $menuOpenWidth + $menuToggleWidth;
-  // transition: padding-left 0.3s;
   padding-left: $menuToggleWidth;
+}
+
+.controls .twitch-search {
+  position: relative;
+  margin: 0.5em 1em 1em;
+}
+
+.controls .stream-controls-wrapper {
+  margin: 0.5em 1em 1em;
+  .stream-controls {
+    position: relative;
+    h2 {
+      font-size: 26px;
+    }
+    .close {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 0;
+      font-size: 0;
+      cursor: pointer;
+      border: 0;
+      &:after {
+        content: 'x';
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+.controls .global-options {
+  margin: 0.5em 1em 1em;
+}
+
+.controls {
+  input, select {
+    color: #666;
+    padding: 0.4em;
+    width: 100%;
+    margin: 0;
+  }
 }
 
 .controls h1 {
@@ -309,6 +366,9 @@ $menuBg = lighten(#6441a5, 80%);
   transition: transform 0.3s;
   padding-top: 35px;
   box-sizing: border-box;
+  font-size: 150%;
+  font-weight: 200;
+  line-height: 1.5;
 }
 
 .controls .control-toggle {

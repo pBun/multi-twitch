@@ -23,7 +23,13 @@ var twitchMultiStream = React.createClass({
     return {
       streams: streams,
       activeStream: streams[0],
-      defaultWidth: defaultWidth
+      defaultWidth: defaultWidth,
+      chatLayouts: [
+        {'label': 'Chat on side', 'name': 'side'},
+        {'label': 'Chat hidden', 'name': 'hidden'},
+        {'label': 'Chat inline', 'name': 'block'}
+      ],
+      currentChatLayout: 'side'
     }
   },
 
@@ -110,6 +116,12 @@ var twitchMultiStream = React.createClass({
     });
   },
 
+  changeChatLayout: function(e) {
+    this.setState({
+      currentChatLayout: e.target.value
+    });
+  },
+
   render: function() {
 
     var streams = this.state.streams;
@@ -123,7 +135,7 @@ var twitchMultiStream = React.createClass({
       );
     });
     twitchBlocks.push(
-      <div className="twitch-block" style={{width: twitchBlockWidth + '%'}}>
+      <div className="twitch-block chat" style={{width: twitchBlockWidth + '%'}}>
         <div className="twitch-block-inner">
           <TwitchChatWrapper
             streams={this.state.streams}
@@ -133,26 +145,44 @@ var twitchMultiStream = React.createClass({
       </div>
     );
 
+    var chatLayoutOptions = this.state.chatLayouts.map((item) => {
+      return (
+        <option value={item.name}>{item.label}</option>
+      );
+    });
 
     var streamControls = streams.map((item) => {
       return (
         <div className="stream-controls">
-          <a className="close" onClick={this.removeStream.bind(this, item)}>Close {item.name}</a>
+          <h2>{item.name}</h2>
+          <a className="close" onClick={this.removeStream.bind(this, item)}>Close</a>
         </div>
       );
     });
 
-    var multiStreamClasses = ClassSet({
+    var csOptions = {
       'multi-stream': true,
       'menu-open': this.state.controlsOpen,
       'menu-closed': !this.state.controlsOpen
-    });
+    };
+    if (this.state.currentChatLayout) {
+      csOptions['chat-' + this.state.currentChatLayout] = true;
+    }
+
+    var multiStreamClasses = ClassSet(csOptions);
     return (
       <div className={multiStreamClasses}>
         <div className="controls">
           <h1>Multi Twitch</h1>
+          <div className="global-options">
+            <select value={this.state.currentChatLayout} onChange={this.changeChatLayout}>
+              {chatLayoutOptions}
+            </select>
+          </div>
           <TwitchSearch streams={this.state.streams} addStream={this.addStream} />
-          {streamControls}
+          <div className="stream-controls-wrapper">
+            {streamControls}
+          </div>
           <a className="control-toggle" onClick={this.toggleControls}>Toggle controls</a>
         </div>
         <div className="streams">
