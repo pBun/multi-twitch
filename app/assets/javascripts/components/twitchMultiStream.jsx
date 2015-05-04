@@ -125,7 +125,7 @@ var twitchMultiStream = React.createClass({
   render: function() {
 
     var streams = this.state.streams;
-    var numTwitchBlocks = streams.length + 1;
+    var numTwitchBlocks = streams.length + (this.state.currentChatLayout === 'block' ? 1 : 0);
     var twitchBlockWidth = numTwitchBlocks <= 2 ? 100 : numTwitchBlocks <= 4 ? 50 : numTwitchBlocks <= 9 ? 33.3333 : 25;
     var twitchBlocks = streams.map((item) => {
       return (
