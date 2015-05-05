@@ -80,14 +80,6 @@ var Search = React.createClass({
     }, 300)
   },
 
-  /**
-   * Input box text has changed, trigger update of the autocomplete box.
-  **/
-  changeInput: function() {
-
-
-  },
-
   keyInput: function(e) {
 
     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
@@ -151,8 +143,7 @@ var Search = React.createClass({
           className="input-text"
           ref="searchInput"
           placeholder="Channel name"
-          onKeyDown={this.keyInput}
-          onChange={this.changeInput} />
+          onKeyDown={this.keyInput} />
 
         <div className="menu menu-hidden" ref="autocomplete">
           <ul>
