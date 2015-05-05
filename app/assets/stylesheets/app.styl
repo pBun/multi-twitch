@@ -251,6 +251,10 @@ $sideChatWidth = 300px;
 /* # Search
 ================================================== */
 
+.twitch-search {
+  position: relative;
+}
+
 .twitch-search .input-text {
   color: #666;
   padding: 0.4em;
@@ -312,51 +316,35 @@ $menuBg = lighten(#6441a5, 80%);
   margin-left: $menuToggleWidth;
 }
 
-.controls .twitch-search {
-  position: relative;
-  margin: 0.5em 1em 1em;
-}
-
-.controls .stream-controls-wrapper {
-  margin: 0.5em 1em 1em;
-  .stream-controls {
-    position: relative;
-    h2 {
-      font-size: 26px;
-    }
-    .close {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      right: 0;
-      font-size: 0;
-      cursor: pointer;
-      border: 0;
-      &:after {
-        content: 'x';
-        font-size: 22px;
-      }
-    }
-  }
-}
-
-.controls .global-options {
-  margin: 0.5em 1em 1em;
-}
-
-.controls {
-  input, select {
-    color: #666;
-    padding: 0.4em;
-    width: 100%;
-    margin: 0;
-  }
-}
-
-.controls h1 {
+.controls .section-headline {
   font-weight: 100;
-  font-size: 30px;
-  color: #6441a5;
+  font-size: 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.controls .stream-controls {
+  position: relative;
+  .stream-name {
+    font-weight: 100;
+    font-size: 26px;
+  }
+  .close {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    font-size: 0;
+    cursor: pointer;
+    border: 0;
+    &:after {
+      content: 'x';
+      font-size: 22px;
+    }
+  }
+}
+
+.controls .control-section {
+  margin: 0.5em 1em 1em;
 }
 
 .controls {
@@ -371,9 +359,24 @@ $menuBg = lighten(#6441a5, 80%);
   transition: transform 0.3s;
   padding-top: 35px;
   box-sizing: border-box;
-  font-size: 150%;
+  font-size: 18px;
   font-weight: 200;
   line-height: 1.5;
+}
+
+.controls {
+  input, select {
+    color: #666;
+    padding: 0.4em;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.controls .site-headline {
+  font-weight: 100;
+  font-size: 30px;
+  color: #6441a5;
 }
 
 .controls .control-toggle {

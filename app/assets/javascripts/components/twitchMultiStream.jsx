@@ -165,7 +165,7 @@ var twitchMultiStream = React.createClass({
     var streamControls = streams.map((item) => {
       return (
         <div className="stream-controls">
-          <h2>{item.name}</h2>
+          <h3 className="stream-name">{item.name}</h3>
           <a className="close" onClick={this.removeStream.bind(this, item)}>Close</a>
         </div>
       );
@@ -184,14 +184,19 @@ var twitchMultiStream = React.createClass({
     return (
       <div className={multiStreamClasses}>
         <div className="controls">
-          <h1>Multi Twitch</h1>
-          <div className="global-options">
+          <h1 className="site-headline">Multi Twitch</h1>
+          <div className="control-section">
+            <h2 className="section-headline">Chat</h2>
             <select value={this.state.currentChatLayout} onChange={this.changeChatLayout}>
               {chatLayoutOptions}
             </select>
           </div>
-          <TwitchSearch streams={this.state.streams} addStream={this.addStream} />
-          <div className="stream-controls-wrapper">
+          <div className="control-section">
+            <h2 className="section-headline">Add Stream</h2>
+            <TwitchSearch streams={this.state.streams} addStream={this.addStream} />
+          </div>
+          <div className="control-section">
+            <h2 className="section-headline">Active Streams</h2>
             {streamControls}
           </div>
           <a className="control-toggle" onClick={this.toggleControls}>Toggle controls</a>
