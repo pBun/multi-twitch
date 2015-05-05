@@ -128,17 +128,25 @@ var twitchMultiStream = React.createClass({
   render: function() {
 
     var streams = this.state.streams;
+
     var numTwitchBlocks = streams.length + (this.state.currentChatLayout === 'block' ? 1 : 0);
     var twitchBlockWidth = numTwitchBlocks <= 2 ? 100 : numTwitchBlocks <= 4 ? 50 : numTwitchBlocks <= 9 ? 33.3333 : 25;
+    var twitchBlockHeight = numTwitchBlocks <= 1 ? 100 : numTwitchBlocks <= 4 ? 50 : numTwitchBlocks <= 9 ? 33.3333 : 25;
+    var twitchBlockStyles = {
+      width: twitchBlockWidth + '%',
+      height: twitchBlockHeight + '%'
+    };
     var twitchBlocks = streams.map((item) => {
       return (
-        <div className="twitch-block" style={{width: twitchBlockWidth + '%'}}>
-          <TwitchStream stream={item} />
+        <div className="twitch-block stream" style={twitchBlockStyles}>
+          <div className="twitch-block-inner">
+            <TwitchStream stream={item} />
+          </div>
         </div>
       );
     });
     twitchBlocks.push(
-      <div className="twitch-block chat" style={{width: twitchBlockWidth + '%'}}>
+      <div className="twitch-block chat" style={twitchBlockStyles}>
         <div className="twitch-block-inner">
           <TwitchChatWrapper
             streams={this.state.streams}
