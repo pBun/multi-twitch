@@ -56,11 +56,14 @@ var twitchMultiStream = React.createClass({
       });
     });
     var defaultWidth = streams.length <= 2 ? 100 : streams.length <= 4 ? 50 : streams.length <= 9 ? 33 : 25;
-    this.setState({
-      streams: streams,
-      activeStream: streams[0],
-      defaultWidth: defaultWidth
-    });
+    this.setState({streams: []}); //hack for buggy twitch
+    setTimeout(() => { //hack for buggy twitch
+      this.setState({
+        streams: streams,
+        activeStream: streams[0],
+        defaultWidth: defaultWidth
+      });
+    }, 0);
   },
 
   addStream: function(stream) {
