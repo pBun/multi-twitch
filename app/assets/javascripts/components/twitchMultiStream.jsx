@@ -1,9 +1,9 @@
 var React = require('react');
 var ClassSet = React.addons.classSet;
 
-var TwitchControls = require('babel!./twitchControls.jsx');
+var TwitchControls = require('babel!./twitchControls/twitchControls.jsx');
 var TwitchStream = require('babel!./twitchStream.jsx');
-var TwitchChatWrapper = require('babel!./twitchChatWrapper.jsx');
+var TwitchChatWrapper = require('babel!./twitchChat/twitchChatWrapper.jsx');
 
 var twitchMultiStream = React.createClass({
 

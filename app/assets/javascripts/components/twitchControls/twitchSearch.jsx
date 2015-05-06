@@ -1,5 +1,5 @@
 var React = require('react');
-var TwitchAPI = require('./twitchAPI.js');
+var TwitchAPI = require('../twitchAPI.js');
 var api = new TwitchAPI();
 
 var removeClass = function(el, className) {
@@ -27,6 +27,8 @@ var Search = React.createClass({
        api: new TwitchAPI(),
        matchingItems: [],
        searchValue: '',
+       placeholder: this.props.placeholder || 'Search',
+       clearOnSelect: typeof this.props.clearOnSelect !== 'undefined' ? this.props.clearOnSelect : true,
        twitchSearchType: this.props.twitchSearchType || 'channels'
      }
   },
@@ -35,6 +37,7 @@ var Search = React.createClass({
   componentWillUnmount: function() {
   },
   hideMenu: function() {
+    this.searching = false;
     var autocomplete = this.refs.autocomplete.getDOMNode();
     this.props.currentSearch = null;
     this.setState({matchingItems: [], focus: null});
@@ -64,10 +67,11 @@ var Search = React.createClass({
 
   update: function() {
 
-    clearTimeout(this.props.searchTimeout);
-    this.props.searchTimeout = setTimeout(() => {
+    clearTimeout(this.searchTimeout);
+    this.searchTimeout = setTimeout(() => {
 
       var searchTerms = this.props.currentSearch = this.refs.searchInput.getDOMNode().value;
+      this.searching = true;
 
       if (!searchTerms) {
         this.hideMenu();
@@ -84,12 +88,13 @@ var Search = React.createClass({
 
       api.get('search/' + searchType, options).then((data) => {
 
-        if (!this.props.currentSearch) {
+        if (!this.searching) {
           return;
         }
 
-        var results = searchType === 'games' ? data.games : data.channels;
+        this.searching = false;
 
+        var results = searchType === 'games' ? data.games : data.channels;
         this.updateSuggestions(results);
 
       });
@@ -136,13 +141,18 @@ var Search = React.createClass({
     this.setState({focus: result});
   },
   selectAutoComplete: function(item) {
-    this.props.currentSearch = null;
     var autocomplete = this.refs.autocomplete.getDOMNode();
     this.hideMenu();
-    this.refs.searchInput.getDOMNode().value = '';
+    if (this.state.clearOnSelect) {
+      this.refs.searchInput.getDOMNode().value = '';
+    } else {
+      this.refs.searchInput.getDOMNode().value = item;
+    }
     this.props.selectItem(item);
   },
   render: function(){
+
+    var placeholderText = this.props.placeholder || 'Search';
 
     var items = this.state.matchingItems.map(function(item) {
       return (
@@ -159,7 +169,7 @@ var Search = React.createClass({
         <input type="text"
           className="input-text"
           ref="searchInput"
-          placeholder="Search"
+          placeholder={this.state.placeholder}
           onKeyDown={this.keyInput} />
 
         <div className="menu menu-hidden" ref="autocomplete">

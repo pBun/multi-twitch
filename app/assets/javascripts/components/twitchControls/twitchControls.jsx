@@ -2,6 +2,7 @@ var React = require('react');
 var ClassSet = React.addons.classSet;
 var TwitchSearch = require('babel!./twitchSearch.jsx');
 var TwitchSearchByGame = require('babel!./twitchSearchByGame.jsx');
+var TwitchSearchByStream = require('babel!./twitchSearchByStream.jsx');
 
 var twitchControls = React.createClass({
 
@@ -17,10 +18,22 @@ var twitchControls = React.createClass({
 
   },
 
-  toggleAddStream: function() {
+  enableSearch: function(searchType) {
     this.setState({
-      addingStream: !this.state.addingStream
+      searchEnabled: true,
+      searchType: searchType
     });
+  },
+
+  disableSearch: function() {
+    this.setState({
+      searchEnabled: false
+    });
+  },
+
+  selectSearchResult: function(stream) {
+    this.props.addStream(stream);
+    this.disableSearch();
   },
 
   render: function() {
@@ -45,7 +58,9 @@ var twitchControls = React.createClass({
 
     var csOptions = {
       'controls': true,
-      'adding-stream': this.state.addingStream
+      'search-enabled': this.state.searchEnabled,
+      'game-search': this.state.searchType === 'game',
+      'stream-search': this.state.searchType === 'stream'
     };
     var controlClasses = ClassSet(csOptions);
 
@@ -56,25 +71,34 @@ var twitchControls = React.createClass({
           <div className="main-controls">
             <h1 className="site-headline">Multi Twitch</h1>
             <div className="control-section">
-              <h2 className="section-headline">Options</h2>
               <select value={this.props.currentChatLayout} onChange={this.props.changeChatLayout}>
                 {chatLayoutOptions}
               </select>
-              <TwitchSearch streams={this.props.streams} selectItem={this.props.addStream} />
-              <a className="secondary-toggle" onClick={this.toggleAddStream}>Search by game</a>
             </div>
             <div className="control-section">
-              <h2 className="section-headline">Active Streams</h2>
+              <div className="add-stream-wrapper">
+                <TwitchSearch
+                  streams={this.props.streams}
+                  selectItem={this.props.addStream}
+                  placeholder="Add a channel" />
+                <p className="hint">
+                  <a className="secondary-toggle" onClick={this.enableSearch.bind(this, 'game')}>search games</a>
+                  |
+                  <a className="secondary-toggle" onClick={this.enableSearch.bind(this, 'stream')}>search streams</a>
+                </p>
+              </div>
               {streamControls}
             </div>
           </div>
 
-          <div className="secondary-controls">
-            <div className="control-section">
-              <h2 className="section-headline">Add Stream</h2>
-              <TwitchSearchByGame streams={this.props.streams} selectItem={this.props.addStream} />
+          <div className="search-controls">
+            <div className="game-search">
+              <TwitchSearchByGame streams={this.props.streams} selectItem={this.selectSearchResult} />
             </div>
-            <a className="secondary-toggle" onClick={this.toggleAddStream}>Back to main controls</a>
+            <div className="stream-search">
+              <TwitchSearchByStream streams={this.props.streams} selectItem={this.selectSearchResult} />
+            </div>
+            <a className="secondary-toggle" onClick={this.disableSearch}>Back to main controls</a>
           </div>
         </div>
 

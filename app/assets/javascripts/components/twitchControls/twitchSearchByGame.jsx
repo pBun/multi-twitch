@@ -1,5 +1,5 @@
 var React = require('react');
-var TwitchAPI = require('./twitchAPI.js');
+var TwitchAPI = require('../twitchAPI.js');
 var api = new TwitchAPI();
 var TwitchSearch = require('babel!./twitchSearch.jsx');
 
@@ -14,7 +14,7 @@ var twitchSearchByGame = React.createClass({
 
   },
 
-  listGames: function(game) {
+  getChannels: function(game) {
 
     if (!game) {
       return;
@@ -36,9 +36,8 @@ var twitchSearchByGame = React.createClass({
     });
   },
 
-  clickChannel: function(e) {
-    var item = e.target.innerHTML;
-    this.props.selectItem(item);
+  clickChannel: function(channel) {
+    this.props.selectItem(channel);
   },
 
   render: function() {
@@ -46,18 +45,25 @@ var twitchSearchByGame = React.createClass({
     var items = this.state.channels.map(function(item) {
       return (
         <li className={this.state.focus === item ? 'focus' : ''}>
-          <a onClick={this.clickChannel}>
-            <img className="avatar" src={item.logo} />
-            <span className="title">{item.status}</span>
-            <span className="label">{item.display_name}</span>
+          <a onClick={this.clickChannel.bind(this, item.name)}>
+            <div className="image-wrapper">
+              <img className="avatar" src={item.logo} />
+            </div>
+            <h3 className="name">{item.display_name}</h3>
+            <p className="title">{item.status}</p>
           </a>
         </li>
       );
     }.bind(this));
 
     return (
-      <div className="search-by-game">
-        <TwitchSearch streams={this.props.streams} selectItem={this.listGames} twitchSearchType="games" />
+      <div className="channel-search">
+        <TwitchSearch
+          streams={this.props.streams}
+          selectItem={this.getChannels}
+          twitchSearchType="games"
+          placeholder="Game name"
+          clearOnSelect={false} />
         <ul className="channel-list">
           {items}
         </ul>

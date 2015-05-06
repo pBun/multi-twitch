@@ -29,7 +29,7 @@ a {
   transition: border-color 0.2s ease-in-out;
   &:hover, &:focus {
     color: #6441a5;
-    border-color: #6441a5;
+    border-color: rgba(100, 65, 165, 0.25);
   }
 }
 
@@ -85,6 +85,7 @@ a {
   position: relative;
   width: 100%;
   box-sizing: border-box;
+  background: #32323e;
 }
 .stream-meta {
   position: fixed;
@@ -293,6 +294,7 @@ $sideChatWidth = 300px;
     display: block;
     padding: 0.5em;
     transition: color 0.2s ease-in-out;
+    cursor: pointer;
     &:hover, &:focus, &:active, &:visited {
       border-color: transparent;
     }
@@ -316,10 +318,67 @@ $menuBg = lighten(#6441a5, 80%);
   margin-left: $menuToggleWidth;
 }
 
+.controls {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: $menuBg;
+  height: 100vh;
+  width: $menuOpenWidth;
+  border-right: 1px solid #d1d1d1;
+  transition: transform 0.3s;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 1.5;
+}
+
+.menu-closed {
+  .controls  {
+    transform: translateX(-100%);
+  }
+}
+
+.controls {
+  input, select {
+    color: #666;
+    padding: 0.4em;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.controls .control-section {
+  margin: 0.5em 1em 1em;
+}
+
 .controls .section-headline {
   font-weight: 100;
   font-size: 24px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.controls .main-controls {
+  padding-top: 35px;
+}
+
+.controls .site-headline {
+  font-weight: 100;
+  font-size: 30px;
+  color: #6441a5;
+}
+
+.controls .hint {
+  margin-bottom: 0.5em;
+}
+
+.controls .secondary-toggle {
+  cursor: pointer;
+  padding: 0 0.35em;
+  margin: 0.2em 0;
+  display: inline-block;
+  border: 0;
 }
 
 .controls .stream-controls {
@@ -341,41 +400,6 @@ $menuBg = lighten(#6441a5, 80%);
       font-size: 22px;
     }
   }
-}
-
-.controls .control-section {
-  margin: 0.5em 1em 1em;
-}
-
-.controls {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  background: $menuBg;
-  height: 100vh;
-  width: $menuOpenWidth;
-  border-right: 1px solid #d1d1d1;
-  transition: transform 0.3s;
-  box-sizing: border-box;
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 1.5;
-}
-
-.controls {
-  input, select {
-    color: #666;
-    padding: 0.4em;
-    width: 100%;
-    margin: 0;
-  }
-}
-
-.controls .site-headline {
-  font-weight: 100;
-  font-size: 30px;
-  color: #6441a5;
 }
 
 .controls .control-toggle {
@@ -415,37 +439,44 @@ $menuBg = lighten(#6441a5, 80%);
   color: #6441a5;
 }
 
-.menu-closed {
-  .controls  {
-    transform: translateX(-100%);
-  }
-}
-
+ // search panel styling logic
 .inner-controls-wrap {
   white-space: nowrap;
   overflow: hidden;
 }
 .controls .main-controls,
-.controls .secondary-controls {
+.controls .search-controls {
   white-space: normal;
   display: inline-block;
   vertical-align: top;
   width: 100%;
   transition: 0.2s transform;
-  height: 100%;
+  height: 100vh;
 }
-.controls.adding-stream .main-controls,
-.controls.adding-stream .secondary-controls {
+.controls.search-enabled .main-controls,
+.controls.search-enabled .search-controls {
   transform: translateX(-100%);
 }
-.controls .main-controls {
-  padding-top: 35px;
+.controls .search-controls .game-search,
+.controls .search-controls .stream-search {
+  display: none;
+  height: 100%;
+  width: 100%;
 }
-.controls .secondary-controls {
+.controls.game-search .search-controls .game-search,
+.controls.stream-search .search-controls .stream-search {
+  display: block;
+}
+
+// search controls
+.controls .search-controls {
   position: relative;
   padding-top: 6px;
+  .channel-search {
+    height: 100%;
+  }
 }
-.controls .secondary-controls .secondary-toggle {
+.controls .search-controls .secondary-toggle {
   position: absolute;
   top: 0;
   left: 0;
@@ -461,12 +492,21 @@ $menuBg = lighten(#6441a5, 80%);
     color: #6441a5;
   }
 }
+.controls .search-controls .twitch-search {
+  margin: 50px 0.5em 1em;
+}
+.controls .search-controls .channel-list {
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 
+// search controls channel results
 .channel-list {
   list-style-type: none;
   padding: 0em;
   margin: 0em;
-  overflow-y: scroll;
 }
 .channel-list li {
   margin: 0;
@@ -475,14 +515,11 @@ $menuBg = lighten(#6441a5, 80%);
     display: block;
     padding: 0.5em;
     transition: color 0.2s ease-in-out;
-    &:hover, &:focus, &:active, &:visited {
-      border-color: transparent;
-    }
-  }
-  &.focus {
-    background-color: #6441a5;
-    a {
-      color: #fff;
+    cursor: pointer;
+    border: 0;
+    transition: background-color 0.2s, color 0.2s;
+    .name {
+      margin-bottom: 0;
     }
   }
 }
