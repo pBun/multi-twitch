@@ -28,6 +28,17 @@ var twitchMultiStream = React.createClass({
     }
   },
 
+  componentDidUpdate: function() {
+    this.updateHash();
+  },
+
+  updateHash: function() {
+    var streamNames = this.state.streams.map((stream) => {
+      return stream.name;
+    });
+    window.location.hash = streamNames.join('&');
+  },
+
   setActiveStream: function(stream) {
     this.setState({activeStream: stream});
   },
