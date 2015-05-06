@@ -104,7 +104,6 @@ a {
 .twitch-chat {
   position: relative;
   height: 100%;
-  background-color: #d1d1d1;
 }
 
 .twitch-chat [role=tablist] {
@@ -112,6 +111,7 @@ a {
   margin: 0;
   padding: 0;
   text-align: left;
+  background: #d1d1d1;
 }
 
 .twitch-chat [role=tab] {
@@ -350,17 +350,13 @@ $menuBg = lighten(#6441a5, 80%);
 }
 
 .controls .control-section {
-  margin: 0.5em 1em 1em;
+  margin: 0 1em;
 }
 
 .controls .section-headline {
   font-weight: 100;
   font-size: 24px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-}
-
-.controls .main-controls {
-  padding-top: 35px;
 }
 
 .controls .site-headline {
@@ -382,10 +378,18 @@ $menuBg = lighten(#6441a5, 80%);
 }
 
 .controls .stream-controls {
+  height: 100%;
+  box-sizing: border-box;
+  padding-top: 35px;
+  overflow-y: auto;
+}
+
+.controls .stream-item {
   position: relative;
   .stream-name {
     font-weight: 100;
     font-size: 26px;
+    margin-bottom: 0.5em;
   }
   .close {
     position: absolute;
@@ -399,6 +403,17 @@ $menuBg = lighten(#6441a5, 80%);
       content: 'x';
       font-size: 22px;
     }
+  }
+}
+
+.controls .chat-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: $menuBg;
+  .control-section {
+    margin-bottom: 0.5em;
   }
 }
 
@@ -498,7 +513,7 @@ $menuBg = lighten(#6441a5, 80%);
 .controls .search-controls .channel-list {
   height: 100%;
   box-sizing: border-box;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 

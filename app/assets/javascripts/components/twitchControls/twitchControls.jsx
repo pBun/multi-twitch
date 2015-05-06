@@ -49,7 +49,7 @@ var twitchControls = React.createClass({
 
     var streamControls = streams.map((item) => {
       return (
-        <div className="stream-controls">
+        <div className="stream-item">
           <h3 className="stream-name">{item.name}</h3>
           <a className="close" onClick={this.props.removeStream.bind(this, item)}>Close</a>
         </div>
@@ -69,13 +69,8 @@ var twitchControls = React.createClass({
 
         <div className="inner-controls-wrap">
           <div className="main-controls">
-            <h1 className="site-headline">Multi Twitch</h1>
-            <div className="control-section">
-              <select value={this.props.currentChatLayout} onChange={this.props.changeChatLayout}>
-                {chatLayoutOptions}
-              </select>
-            </div>
-            <div className="control-section">
+            <div className="stream-controls control-section">
+              <h1 className="site-headline">Multi Twitch</h1>
               <div className="add-stream-wrapper">
                 <TwitchSearch
                   streams={this.props.streams}
@@ -88,6 +83,13 @@ var twitchControls = React.createClass({
                 </p>
               </div>
               {streamControls}
+            </div>
+            <div className="chat-controls">
+              <div className="control-section">
+                <select value={this.props.currentChatLayout} onChange={this.props.changeChatLayout}>
+                  {chatLayoutOptions}
+                </select>
+              </div>
             </div>
           </div>
 
