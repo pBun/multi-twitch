@@ -35,6 +35,10 @@ var twitchControls = React.createClass({
     this.disableSearch();
   },
 
+  clickStreamClose: function(stream) {
+    this.props.removeStream(stream);
+  },
+
   render: function() {
 
     var streams = this.props.streams;
@@ -50,7 +54,7 @@ var twitchControls = React.createClass({
       return (
         <div key={item.id} className="stream-item">
           <h3 className="stream-name">{item.name}</h3>
-          <a className="close" onClick={this.props.removeStream.bind(this, item)}>Close</a>
+          <a className="close" onClick={this.clickStreamClose.bind(this, item)}>Close</a>
         </div>
       );
     });

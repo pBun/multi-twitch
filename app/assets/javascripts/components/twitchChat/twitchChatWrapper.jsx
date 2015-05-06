@@ -24,6 +24,10 @@ var twitchChatWrapper = React.createClass({
     chatPanels.style.height = newHeight + 'px';
   },
 
+  clickChatTab: function(stream) {
+    this.props.setActiveStream(stream);
+  },
+
   render: function() {
 
     var chatTabs = this.props.streams.map((item) => {
@@ -34,7 +38,7 @@ var twitchChatWrapper = React.createClass({
           aria-selected={isActive ? 'true' : 'false'}
           aria-expanded={isActive ? 'true' : 'false'}
           >
-          <a className="tab-inner" onClick={this.props.setActiveStream.bind(this, item)}>{item.name}</a>
+          <a className="tab-inner" onClick={this.clickChatTab.bind(this, item)}>{item.name}</a>
         </li>
       );
     });
