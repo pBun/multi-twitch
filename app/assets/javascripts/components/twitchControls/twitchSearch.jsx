@@ -156,7 +156,7 @@ var Search = React.createClass({
 
     var items = this.state.matchingItems.map(function(item) {
       return (
-        <li className={this.state.focus === item ? 'focus' : ''}>
+        <li key={item} className={this.state.focus === item ? 'focus' : ''}>
           <a onClick={this.clickAutoComplete} onMouseOver={this.focusAutoComplete} onFocus={this.focusAutoComplete}>
             {item}
           </a>

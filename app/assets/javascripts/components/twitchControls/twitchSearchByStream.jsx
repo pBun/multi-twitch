@@ -87,7 +87,7 @@ var twitchSearchByStream = React.createClass({
 
     var items = this.state.channels.map(function(item) {
       return (
-        <li className={this.state.focus === item ? 'focus' : ''}>
+        <li key={item.name} className={this.state.focus === item ? 'focus' : ''}>
           <a onClick={this.clickChannel.bind(this, item.name)}>
             <div className="image-wrapper">
               <img className="avatar" src={item.logo} />
