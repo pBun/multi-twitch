@@ -8,7 +8,7 @@ var twitchChat = React.createClass({
 
     return (
       <div className="stream-chat embed-container" ref="twitchChat">
-        <iframe src={chatUrl} frameborder="0" scrolling="no"></iframe>
+        <iframe src={chatUrl} frameBorder="0" scrolling="no"></iframe>
       </div>
     );
   }
