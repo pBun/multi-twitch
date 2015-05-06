@@ -28,37 +28,8 @@ var twitchMultiStream = React.createClass({
     }
   },
 
-  componentDidMount: function() {
-    window.addEventListener('hashchange', this.hashchangeHandler);
-  },
-
-  componentWillUnmount: function() {
-    window.removeEventListener('hashchange', this.hashchangeHandler);
-  },
-
   setActiveStream: function(stream) {
     this.setState({activeStream: stream});
-  },
-
-  hashchangeHandler: function(e) {
-    var urlStreams = window.location.hash.replace('#', '');
-    urlStreams = urlStreams ? urlStreams.split('&') : [];
-    var streams = [];
-    urlStreams.forEach((stream, i) => {
-      streams.push({
-        id: Date.now() + i,
-        name: stream
-      });
-    });
-    var defaultWidth = streams.length <= 2 ? 100 : streams.length <= 4 ? 50 : streams.length <= 9 ? 33 : 25;
-    this.setState({streams: []}); //hack for buggy twitch
-    setTimeout(() => { //hack for buggy twitch
-      this.setState({
-        streams: streams,
-        activeStream: streams[0],
-        defaultWidth: defaultWidth
-      });
-    }, 0);
   },
 
   addStream: function(stream) {
@@ -94,18 +65,6 @@ var twitchMultiStream = React.createClass({
         defaultWidth: defaultWidth
       });
     }, 0);
-  },
-
-  updateStreamSize: function(stream, e) {
-    var streams = this.state.streams.slice();
-    streams.forEach((s) => {
-      if (s.id === stream.id) {
-        stream.width = e.target.value;
-      }
-    });
-    this.setState({
-      streams: streams
-    });
   },
 
   toggleControls: function() {
