@@ -1,5 +1,4 @@
 var React = require('react');
-var ClassSet = React.addons.classSet;
 
 var TwitchControls = require('babel!./twitchControls/twitchControls.jsx');
 var TwitchStream = require('babel!./twitchStream.jsx');
@@ -67,15 +66,12 @@ var twitchMultiStream = React.createClass({
     var streams = this.state.streams.slice();
     streams.splice(streamIndex, 1);
     var defaultWidth = streams.length <= 2 ? 100 : streams.length <= 4 ? 50 : streams.length <= 9 ? 33 : 25;
-    this.setState({streams: []}); //hack for buggy twitch
-    setTimeout(() => { //hack for buggy twitch
-      this.setState({
-        streams: streams,
-        activeStream: activeStream != stream ? activeStream :
-          streams.length ? streams[0] : null,
-        defaultWidth: defaultWidth
-      });
-    }, 0);
+    this.setState({
+      streams: streams,
+      activeStream: activeStream != stream ? activeStream :
+        streams.length ? streams[0] : null,
+      defaultWidth: defaultWidth
+    });
   },
 
   toggleControls: function() {
@@ -103,7 +99,7 @@ var twitchMultiStream = React.createClass({
     };
     var twitchBlocks = streams.map((item) => {
       return (
-        <div className="twitch-block stream" style={twitchBlockStyles}>
+        <div key={item.id} className="twitch-block stream" style={twitchBlockStyles}>
           <div className="twitch-block-inner">
             <TwitchStream stream={item} />
           </div>
@@ -111,7 +107,7 @@ var twitchMultiStream = React.createClass({
       );
     });
     twitchBlocks.push(
-      <div className="twitch-block chat" style={twitchBlockStyles}>
+      <div key="chat" className="twitch-block chat" style={twitchBlockStyles}>
         <div className="twitch-block-inner">
           <TwitchChatWrapper
             streams={this.state.streams}
@@ -121,21 +117,17 @@ var twitchMultiStream = React.createClass({
       </div>
     );
 
-    var csOptions = {
-      'multi-stream': true,
-      'menu-open': this.state.controlsOpen,
-      'menu-closed': !this.state.controlsOpen
-    };
-    if (this.state.currentChatLayout) {
-      csOptions['chat-' + this.state.currentChatLayout] = true;
-    }
-
     var noStreamMessage;
     if (streams.length < 1) {
       noStreamMessage = (<p className="no-streams-message">Click on the '+' to start adding streams</p>);
     }
 
-    var multiStreamClasses = ClassSet(csOptions);
+    var multiStreamClasses = [
+      'multi-stream',
+      'chat-' + this.state.currentChatLayout,
+      this.state.controlsOpen ? 'menu-open' : 'menu-closed'
+    ].join(' ');
+
     return (
       <div className={multiStreamClasses}>
         <TwitchControls

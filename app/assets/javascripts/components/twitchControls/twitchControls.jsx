@@ -1,5 +1,4 @@
 var React = require('react');
-var ClassSet = React.addons.classSet;
 var TwitchSearch = require('babel!./twitchSearch.jsx');
 var TwitchSearchByGame = require('babel!./twitchSearchByGame.jsx');
 var TwitchSearchByStream = require('babel!./twitchSearchByStream.jsx');
@@ -49,20 +48,19 @@ var twitchControls = React.createClass({
 
     var streamControls = streams.map((item) => {
       return (
-        <div className="stream-item">
+        <div key={item.id} className="stream-item">
           <h3 className="stream-name">{item.name}</h3>
           <a className="close" onClick={this.props.removeStream.bind(this, item)}>Close</a>
         </div>
       );
     });
 
-    var csOptions = {
-      'controls': true,
-      'search-enabled': this.state.searchEnabled,
-      'game-search': this.state.searchType === 'game',
-      'stream-search': this.state.searchType === 'stream'
-    };
-    var controlClasses = ClassSet(csOptions);
+
+    var controlClasses = [
+      'controls',
+      this.state.searchEnabled ? 'search-enabled' : 'search-disabled',
+      this.state.searchType + '-search'
+    ].join(' ');
 
     return (
       <div className={controlClasses}>
