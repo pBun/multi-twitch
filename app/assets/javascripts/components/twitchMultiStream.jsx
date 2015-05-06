@@ -124,7 +124,8 @@ var twitchMultiStream = React.createClass({
     var csOptions = {
       'multi-stream': true,
       'menu-open': this.state.controlsOpen,
-      'menu-closed': !this.state.controlsOpen
+      'menu-closed': !this.state.controlsOpen,
+      'no-streams': streams.length < 1
     };
     if (this.state.currentChatLayout) {
       csOptions['chat-' + this.state.currentChatLayout] = true;
@@ -143,6 +144,7 @@ var twitchMultiStream = React.createClass({
         <div className="streams">
           {twitchBlocks}
         </div>
+        <p className="no-streams-message">Click on the '+' to start adding streams</p>
       </div>
     );
   }
