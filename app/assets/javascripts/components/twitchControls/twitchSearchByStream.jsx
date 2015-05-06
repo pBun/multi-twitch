@@ -29,6 +29,7 @@ var twitchSearchByStream = React.createClass({
         'query': searchTerms
       };
 
+      this.setState({searching: true});
       api.get('search/streams', options).then((data) => {
 
         if (!this.props.currentSearch) {
@@ -39,7 +40,7 @@ var twitchSearchByStream = React.createClass({
           return stream.channel;
         });
 
-        this.setState({channels: channels});
+        this.setState({channels: channels, searching: false});
 
       });
 
@@ -85,6 +86,10 @@ var twitchSearchByStream = React.createClass({
 
   render: function() {
 
+    var isSearching = this.state.searching;
+    var doneSearching = !isSearching && typeof this.state.searching != 'undefined';
+    var resultsEmpty = this.state.channels.length < 1;
+
     var items = this.state.channels.map(function(item) {
       return (
         <li key={item.name} className={this.state.focus === item ? 'focus' : ''}>
@@ -99,6 +104,9 @@ var twitchSearchByStream = React.createClass({
       );
     }.bind(this));
 
+    var loading = isSearching ? (<span className="loading">Loading...</span>) : null;
+    var noItems = doneSearching && resultsEmpty ? (<span className="no-channels">No channels found =(</span>) : null;
+
     return (
       <div className="channel-search">
         <div className="twitch-search">
@@ -109,6 +117,7 @@ var twitchSearchByStream = React.createClass({
             onKeyDown={this.keyInput} />
         </div>
         <ul className="channel-list">
+          {loading}
           {items}
         </ul>
       </div>

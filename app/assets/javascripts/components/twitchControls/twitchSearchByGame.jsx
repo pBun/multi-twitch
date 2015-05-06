@@ -20,6 +20,7 @@ var twitchSearchByGame = React.createClass({
       return;
     }
 
+    this.setState({searching: true});
     api.get('search/streams', {'query': game, 'limit': 100}).then((data) => {
 
       var channels = data.streams.map((stream) => {
@@ -30,7 +31,8 @@ var twitchSearchByGame = React.createClass({
 
       this.setState({
         game: game,
-        channels: channels
+        channels: channels,
+        searching: false
       });
 
     });
@@ -41,6 +43,10 @@ var twitchSearchByGame = React.createClass({
   },
 
   render: function() {
+
+    var isSearching = this.state.searching;
+    var doneSearching = !isSearching && typeof this.state.searching != 'undefined';
+    var resultsEmpty = this.state.channels.length < 1;
 
     var items = this.state.channels.map(function(item) {
       return (
@@ -56,6 +62,9 @@ var twitchSearchByGame = React.createClass({
       );
     }.bind(this));
 
+    var loading = isSearching ? (<span className="loading">Loading...</span>) : null;
+    var noItems = doneSearching && resultsEmpty ? (<span className="no-channels">No channels found =(</span>) : null;
+
     return (
       <div className="channel-search">
         <TwitchSearch
@@ -65,6 +74,8 @@ var twitchSearchByGame = React.createClass({
           placeholder="Game name"
           clearOnSelect={false} />
         <ul className="channel-list">
+          {loading}
+          {noItems}
           {items}
         </ul>
       </div>
