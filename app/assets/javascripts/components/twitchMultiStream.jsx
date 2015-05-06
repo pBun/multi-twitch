@@ -124,8 +124,7 @@ var twitchMultiStream = React.createClass({
     var csOptions = {
       'multi-stream': true,
       'menu-open': this.state.controlsOpen,
-      'menu-closed': !this.state.controlsOpen,
-      'no-streams': streams.length < 1
+      'menu-closed': !this.state.controlsOpen
     };
     if (this.state.currentChatLayout) {
       csOptions['chat-' + this.state.currentChatLayout] = true;
