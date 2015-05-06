@@ -1,7 +1,7 @@
 var React = require('react');
 var ClassSet = React.addons.classSet;
 
-var TwitchSearch = require('babel!./twitchSearch.jsx');
+var TwitchControls = require('babel!./twitchControls.jsx');
 var TwitchStream = require('babel!./twitchStream.jsx');
 var TwitchChatWrapper = require('babel!./twitchChatWrapper.jsx');
 
@@ -24,11 +24,6 @@ var twitchMultiStream = React.createClass({
       streams: streams,
       activeStream: streams[0],
       defaultWidth: defaultWidth,
-      chatLayouts: [
-        {'label': 'Chat on side', 'name': 'side'},
-        {'label': 'Chat hidden', 'name': 'hidden'},
-        {'label': 'Chat inline', 'name': 'block'}
-      ],
       currentChatLayout: 'side'
     }
   },
@@ -156,21 +151,6 @@ var twitchMultiStream = React.createClass({
       </div>
     );
 
-    var chatLayoutOptions = this.state.chatLayouts.map((item) => {
-      return (
-        <option value={item.name}>{item.label}</option>
-      );
-    });
-
-    var streamControls = streams.map((item) => {
-      return (
-        <div className="stream-controls">
-          <h3 className="stream-name">{item.name}</h3>
-          <a className="close" onClick={this.removeStream.bind(this, item)}>Close</a>
-        </div>
-      );
-    });
-
     var csOptions = {
       'multi-stream': true,
       'menu-open': this.state.controlsOpen,
@@ -183,24 +163,13 @@ var twitchMultiStream = React.createClass({
     var multiStreamClasses = ClassSet(csOptions);
     return (
       <div className={multiStreamClasses}>
-        <div className="controls">
-          <h1 className="site-headline">Multi Twitch</h1>
-          <div className="control-section">
-            <h2 className="section-headline">Chat</h2>
-            <select value={this.state.currentChatLayout} onChange={this.changeChatLayout}>
-              {chatLayoutOptions}
-            </select>
-          </div>
-          <div className="control-section">
-            <h2 className="section-headline">Add Stream</h2>
-            <TwitchSearch streams={this.state.streams} addStream={this.addStream} />
-          </div>
-          <div className="control-section">
-            <h2 className="section-headline">Active Streams</h2>
-            {streamControls}
-          </div>
-          <a className="control-toggle" onClick={this.toggleControls}>Toggle controls</a>
-        </div>
+        <TwitchControls
+          toggleControls={this.toggleControls}
+          streams={this.state.streams}
+          addStream={this.addStream}
+          removeStream={this.removeStream}
+          currentChatLayout={this.state.currentChatLayout}
+          changeChatLayout={this.changeChatLayout}/>
         <div className="streams">
           {twitchBlocks}
         </div>

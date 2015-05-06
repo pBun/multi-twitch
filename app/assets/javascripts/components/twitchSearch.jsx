@@ -26,7 +26,8 @@ var Search = React.createClass({
      return {
        api: new TwitchAPI(),
        matchingItems: [],
-       searchValue: ''
+       searchValue: '',
+       twitchSearchType: this.props.twitchSearchType || 'channels'
      }
   },
   componentDidMount: function() {
@@ -46,37 +47,53 @@ var Search = React.createClass({
     addClass(autocomplete, 'menu-open');
   },
 
+  updateSuggestions: function(items) {
+    var suggestions = [];
+    for (var item of items) {
+      suggestions.push(item.name);
+    }
+
+    if (!suggestions.length) {
+      this.hideMenu();
+    } else {
+      this.showMenu();
+    }
+
+    this.setState({matchingItems: suggestions});
+  },
+
   update: function() {
 
     clearTimeout(this.props.searchTimeout);
     this.props.searchTimeout = setTimeout(() => {
 
-      this.props.currentSearch = this.refs.searchInput.getDOMNode().value;
+      var searchTerms = this.props.currentSearch = this.refs.searchInput.getDOMNode().value;
 
-      if (!this.props.currentSearch) {
+      if (!searchTerms) {
         this.hideMenu();
         return;
       }
 
-      api.get('search/channels', {'query': this.props.currentSearch}).then((data) => {
+      var searchType = this.state.twitchSearchType;
+      var options = {
+        'query': searchTerms
+      };
+      if (searchType === 'games') {
+        options.type = 'suggest';
+      }
+
+      api.get('search/' + searchType, options).then((data) => {
 
         if (!this.props.currentSearch) {
           return;
         }
 
-        var suggestions = [];
-        for (var stream of data.channels) {
-          suggestions.push(stream.name);
-        }
+        var results = searchType === 'games' ? data.games : data.channels;
 
-        if (!suggestions.length) {
-          this.hideMenu();
-        } else {
-          this.showMenu();
-        }
+        this.updateSuggestions(results);
 
-        this.setState({matchingItems: suggestions});
       });
+
     }, 300)
   },
 
@@ -123,7 +140,7 @@ var Search = React.createClass({
     var autocomplete = this.refs.autocomplete.getDOMNode();
     this.hideMenu();
     this.refs.searchInput.getDOMNode().value = '';
-    this.props.addStream(item);
+    this.props.selectItem(item);
   },
   render: function(){
 
@@ -142,7 +159,7 @@ var Search = React.createClass({
         <input type="text"
           className="input-text"
           ref="searchInput"
-          placeholder="Channel name"
+          placeholder="Search"
           onKeyDown={this.keyInput} />
 
         <div className="menu menu-hidden" ref="autocomplete">

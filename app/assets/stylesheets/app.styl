@@ -357,7 +357,6 @@ $menuBg = lighten(#6441a5, 80%);
   width: $menuOpenWidth;
   border-right: 1px solid #d1d1d1;
   transition: transform 0.3s;
-  padding-top: 35px;
   box-sizing: border-box;
   font-size: 18px;
   font-weight: 200;
@@ -419,6 +418,72 @@ $menuBg = lighten(#6441a5, 80%);
 .menu-closed {
   .controls  {
     transform: translateX(-100%);
+  }
+}
+
+.inner-controls-wrap {
+  white-space: nowrap;
+  overflow: hidden;
+}
+.controls .main-controls,
+.controls .secondary-controls {
+  white-space: normal;
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  transition: 0.2s transform;
+  height: 100%;
+}
+.controls.adding-stream .main-controls,
+.controls.adding-stream .secondary-controls {
+  transform: translateX(-100%);
+}
+.controls .main-controls {
+  padding-top: 35px;
+}
+.controls .secondary-controls {
+  position: relative;
+  padding-top: 6px;
+}
+.controls .secondary-controls .secondary-toggle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  font-size: 0;
+  &:before {
+    content: '<';
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 28px;
+    padding: 0.25em;
+    color: #6441a5;
+  }
+}
+
+.channel-list {
+  list-style-type: none;
+  padding: 0em;
+  margin: 0em;
+  overflow-y: scroll;
+}
+.channel-list li {
+  margin: 0;
+  transition: background-color 0.2s ease-in-out;
+  a {
+    display: block;
+    padding: 0.5em;
+    transition: color 0.2s ease-in-out;
+    &:hover, &:focus, &:active, &:visited {
+      border-color: transparent;
+    }
+  }
+  &.focus {
+    background-color: #6441a5;
+    a {
+      color: #fff;
+    }
   }
 }
 
