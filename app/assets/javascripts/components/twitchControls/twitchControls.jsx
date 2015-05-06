@@ -41,7 +41,7 @@ var twitchControls = React.createClass({
 
     var chatLayoutOptions = this.state.chatLayouts.map((item) => {
       return (
-        <option value={item.name}>{item.label}</option>
+        <option key={item.name} value={item.name}>{item.label}</option>
       );
     });
 

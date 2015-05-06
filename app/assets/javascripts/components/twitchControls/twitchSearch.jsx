@@ -39,7 +39,6 @@ var Search = React.createClass({
   hideMenu: function() {
     this.searching = false;
     var autocomplete = this.refs.autocomplete.getDOMNode();
-    this.props.currentSearch = null;
     this.setState({matchingItems: [], focus: null});
     removeClass(autocomplete, 'menu-open');
     addClass(autocomplete, 'menu-hidden');
@@ -70,7 +69,7 @@ var Search = React.createClass({
     clearTimeout(this.searchTimeout);
     this.searchTimeout = setTimeout(() => {
 
-      var searchTerms = this.props.currentSearch = this.refs.searchInput.getDOMNode().value;
+      var searchTerms = this.refs.searchInput.getDOMNode().value;
       this.searching = true;
 
       if (!searchTerms) {
