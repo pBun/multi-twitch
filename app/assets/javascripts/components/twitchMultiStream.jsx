@@ -18,11 +18,9 @@ var twitchMultiStream = React.createClass({
       });
     });
 
-    var defaultWidth = streams.length <= 2 ? 100 : streams.length <= 4 ? 50 : streams.length <= 9 ? 33 : 25;
     return {
       streams: streams,
       activeStream: streams[0],
-      defaultWidth: defaultWidth,
       currentChatLayout: 'side'
     }
   },
@@ -49,11 +47,9 @@ var twitchMultiStream = React.createClass({
       id: Date.now(),
       name: stream
     });
-    var defaultWidth = streams.length <= 2 ? 100 : streams.length <= 4 ? 50 : streams.length <= 9 ? 33 : 25;
     this.setState({
       streams: streams,
-      activeStream: activeStream || streams[0],
-      defaultWidth: defaultWidth
+      activeStream: activeStream || streams[0]
     });
   },
 
@@ -65,12 +61,10 @@ var twitchMultiStream = React.createClass({
     var activeStream = this.state.activeStream;
     var streams = this.state.streams.slice();
     streams.splice(streamIndex, 1);
-    var defaultWidth = streams.length <= 2 ? 100 : streams.length <= 4 ? 50 : streams.length <= 9 ? 33 : 25;
     this.setState({
       streams: streams,
       activeStream: activeStream != stream ? activeStream :
-        streams.length ? streams[0] : null,
-      defaultWidth: defaultWidth
+        streams.length ? streams[0] : null
     });
   },
 
@@ -92,7 +86,7 @@ var twitchMultiStream = React.createClass({
 
     var numTwitchBlocks = streams.length + (this.state.currentChatLayout === 'block' ? 1 : 0);
     var twitchBlockWidth = numTwitchBlocks <= 2 ? 100 : numTwitchBlocks <= 4 ? 50 : numTwitchBlocks <= 9 ? 33.3333 : 25;
-    var twitchBlockHeight = numTwitchBlocks <= 1 ? 100 : numTwitchBlocks <= 4 ? 50 : numTwitchBlocks <= 9 ? 33.3333 : 25;
+    var twitchBlockHeight = numTwitchBlocks <= 1 ? 100 : numTwitchBlocks <= 6 ? 50 : numTwitchBlocks <= 9 ? 33.3333 : 25;
     var twitchBlockStyles = {
       width: twitchBlockWidth + '%',
       height: twitchBlockHeight + '%'

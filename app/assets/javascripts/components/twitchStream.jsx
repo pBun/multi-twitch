@@ -12,7 +12,7 @@ var twitchStream = React.createClass({
         <ReactSWF
           src = "//www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf"
           id = {embedId}
-          wmode = "transparent"
+          wmode = "direct"
           flashVars = {{
             embed: 1,
             channel: this.props.stream.name,
