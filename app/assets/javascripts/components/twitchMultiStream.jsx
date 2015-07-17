@@ -37,6 +37,7 @@ var twitchMultiStream = React.createClass({
   },
 
   setActiveStream: function(stream) {
+    this.focusAudio(stream.id);
     this.setState({activeStream: stream});
   },
 
@@ -68,6 +69,17 @@ var twitchMultiStream = React.createClass({
     });
   },
 
+  focusAudio: function(streamId) {
+    this.state.streams.forEach(function(stream) {
+      var streamObj = this.refs['stream-' + stream.id];
+      if (streamId === stream.id) {
+        streamObj.unmute();
+      } else {
+        streamObj.mute();
+      }
+    }.bind(this));
+  },
+
   toggleControls: function() {
     this.setState({
       controlsOpen: !this.state.controlsOpen
@@ -95,7 +107,10 @@ var twitchMultiStream = React.createClass({
       return (
         <div key={item.id} className="twitch-block stream" style={twitchBlockStyles}>
           <div className="twitch-block-inner">
-            <TwitchStream stream={item} />
+            <TwitchStream
+              stream={item}
+              activeStream={this.state.activeStream}
+              ref={'stream-' + item.id} />
           </div>
         </div>
       );
