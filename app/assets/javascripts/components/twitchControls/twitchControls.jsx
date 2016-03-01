@@ -9,8 +9,9 @@ var twitchControls = React.createClass({
 
     return {
       chatLayouts: [
-        {'label': 'Chat on side', 'name': 'side'},
-        {'label': 'Chat hidden', 'name': 'hidden'},
+        {'label': 'Default', 'name': 'side'},
+        {'label': 'Active chat stream only', 'name': 'focus'},
+        {'label': 'No chat', 'name': 'hidden'},
         {'label': 'Chat inline', 'name': 'block'}
       ]
     }

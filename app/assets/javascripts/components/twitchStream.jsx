@@ -54,9 +54,13 @@ var twitchStream = React.createClass({
   render: function() {
 
     var embedId = this.state.embedId;
+    var embedClasses  = [
+      'embed-container',
+      this.props.activeStream.id === this.props.stream.id ? 'focused' : 'not-focused'
+    ].join(' ');
 
     return (
-      <div className='embed-container'>
+      <div className={embedClasses}>
         <div id={embedId}></div>
       </div>
     );

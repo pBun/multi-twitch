@@ -236,7 +236,8 @@ a {
 ================================================== */
 
 $sideChatWidth = 300px;
-.chat-side {
+.chat-side,
+.chat-focus {
   box-sizing: border-box;
   padding-right: $sideChatWidth;
   .twitch-block.chat {
@@ -249,6 +250,20 @@ $sideChatWidth = 300px;
     .twitch-block-inner {
       padding: 0;
       height: 100%;
+    }
+  }
+  &.chat-focus {
+    .streams .stream {
+      width: 100% !important;
+      height: 100% !important;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      .embed-container.not-focused {
+        opacity: 0;
+      }
     }
   }
 }
