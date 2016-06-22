@@ -21,7 +21,7 @@ class TwitchAPI {
     this.domain = 'https://api.twitch.tv/kraken/';
 
     // this._twitchAppID = 'eo7lzdc6ztvx2unetp7g34cnarh3148'; // dev
-    this._twitchAppID = '3m7g6nmmmaat5ftz9tyldgqfepk817f';
+    this._twitchAppID = 'gq3qyn8174lwb4psnv6vmvb5lmoslrr';
   }
 
   buildQueryString(options) {
@@ -46,7 +46,7 @@ class TwitchAPI {
   get(request, options) {
     return new Promise((resolve, reject) => {
       options = options || {};
-      // options.client_id = this._twitchAppID;
+      options.client_id = this._twitchAppID;
       options.callback = 'JSON_CALLBACK';
 
       // work-around for twitch.tv api streams req not supporting client_id
