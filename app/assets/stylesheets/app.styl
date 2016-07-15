@@ -208,9 +208,21 @@ a {
 }
 
 .twitch-block.stream {
-  .embed-container {
+  background: #000;
+  .embed-container,
+  .embed-container>div {
+    position: relative;
     height: 100%;
   }
+  .embed-container {
+    transition: opacity 0.3s;
+    &.not-focused {
+      opacity: 0.8;
+    }
+  }
+}
+.chat-hidden .twitch-block.stream .embed-container.not-focused {
+  opacity: 1;
 }
 
 .twitch-block.chat {
@@ -261,6 +273,7 @@ $sideChatWidth = 300px;
       left: 0;
       right: 0;
       bottom: 0;
+      background: transparent;
       .embed-container.not-focused {
         opacity: 0;
       }

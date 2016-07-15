@@ -1,5 +1,4 @@
 var React = require('react');
-var ReactSWF = require('./react-swf');
 
 var twitchStream = React.createClass({
 
@@ -12,31 +11,36 @@ var twitchStream = React.createClass({
 
   componentDidMount: function() {
 
-    var eventHandlerName = 'onTwitchPlayerEvent' + this.props.stream.id;
-    window[eventHandlerName] = this.handleStreamEvent;
+    var options = {
+        width: 640,
+        height: 400,
+        channel: this.state.channel,
+        // video: '{VIDEO_ID}'
+    };
 
-    swfobject.embedSWF('//www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf', this.state.embedId, '640', '400', '11', null,
-      {
-        'eventsCallback': eventHandlerName,
-        'embed': 1,
-        'channel': this.state.channel,
-        'auto_play': 'true'
-      }, {
-        'allowScriptAccess': 'always',
-        'allowFullScreen': 'true'
+    var player = this.state.player = new Twitch.Player(this.state.embedId, options);
+
+    var self = this;
+    player.addEventListener('ready', function() {
+      if (self.props.activeStream.id === self.props.stream.id) {
+        self.unmute();
+      } else {
+        self.mute();
       }
-    );
-
+      player.play();
+    });
   },
 
   mute: function() {
-    var player = document.getElementById(this.state.embedId);
-    player.mute();
+    var player = this.state.player;
+    if (!player) return;
+    player.setMuted(true);
   },
 
   unmute: function() {
-    var player = document.getElementById(this.state.embedId);
-    player.unmute();
+    var player = this.state.player;
+    if (!player) return;
+    player.setMuted(false);
   },
 
   handleStreamEvent: function(data) {
@@ -58,7 +62,6 @@ var twitchStream = React.createClass({
       'embed-container',
       this.props.activeStream.id === this.props.stream.id ? 'focused' : 'not-focused'
     ].join(' ');
-
     return (
       <div className={embedClasses}>
         <div id={embedId}></div>
