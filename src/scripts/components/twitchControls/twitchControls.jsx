@@ -121,7 +121,7 @@ export default class TwitchControls extends React.Component {
 
                 <a className="control-toggle"
                     onClick={this.props.toggleControls}
-                >Toggle controls</a>
+                ><span className="control-text"><span className="control-text-text">menu</span></span></a>
 
             </div>
         );

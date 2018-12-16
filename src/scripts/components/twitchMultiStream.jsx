@@ -76,9 +76,10 @@ export default class TwitchMultiStream extends React.Component {
         });
     }
 
-    toggleControls() {
+    toggleControls(controlsState) {
         this.setState({
-            controlsOpen: !this.state.controlsOpen
+            controlsOpen: typeof controlsState === 'boolean'
+                ? controlsState : !this.state.controlsOpen
         });
     }
 
@@ -146,7 +147,7 @@ export default class TwitchMultiStream extends React.Component {
                     removeStream={this.removeStream}
                     currentChatLayout={currentChatLayout}
                     changeChatLayout={this.changeChatLayout}/>
-                <div className="streams">
+                <div className="streams" onClick={this.toggleControls.bind(this, false)}>
                     {twitchBlocks}
                 </div>
                 {noStreamMessage}

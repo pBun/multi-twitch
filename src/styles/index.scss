@@ -13,6 +13,7 @@ body {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     line-height: 1.2em;
+    background: #000;
 }
 
 label,
@@ -58,7 +59,13 @@ a {
     position: relative;
     width: 100%;
     box-sizing: border-box;
-    background: #fff;
+    transition: 0.3s opacity;
+    .menu-open & {
+        opacity: 0.25;
+        iframe {
+            pointer-events: none;
+        }
+    }
 }
 
 .no-streams-message {
@@ -444,31 +451,39 @@ $menuBg: #dfd7ef;
     height: 100%;
     width: $menuToggleWidth;
     cursor: pointer;
-    font-size: 0;
 }
 
-.controls .control-toggle:after {
-    content: '+';
-    left: 0;
+.controls .control-text {
+    display: block;
     top: 50%;
-    transform: translateY(-50%);
     position: absolute;
-    font-size: 34px;
-    width: 100%;
-    text-align: center;
-    color: $menuBg;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     font-weight: 400;
+    white-space: nowrap;
+    transform-origin: center;
+}
+.controls .control-text:after {
+    content: '';
+    text-align: center;
+    transition: 0.3s transform;
+    font-size: 1.333em;
+    display: inline-block;
+    margin-left: 0.25em;
+    .menu-open & {
+        transform: rotate(45deg);
+    }
 }
 
-.controls .control-toggle:before {
-    content: 'x';
-    position: absolute;
-    top: 0;
-    right: 100%;
-    font-size: 28px;
-    padding: 0.25em;
-    color: #6441a5;
+.control-text-text,
+.control-text:after {
+    display: inline-block;
+    vertical-align: middle;
 }
+
 // search panel styling logic
 
 .inner-controls-wrap {
