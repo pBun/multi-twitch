@@ -1,28 +1,56 @@
 import React from 'react';
 import TwitchSearch from './twitchSearch.jsx';
 
+const CHAT_LAYOUTS = [{
+        'label': 'Default',
+        'name': 'side'
+    },
+    {
+        'label': 'Active chat stream only',
+        'name': 'focus'
+    },
+    {
+        'label': 'No chat',
+        'name': 'hidden'
+    },
+    {
+        'label': 'Chat inline',
+        'name': 'block'
+    }
+];
+
+class ChatLayoutSelect extends React.PureComponent {
+    render() {
+        const { currentChatLayout, changeChatLayout } = this.props;
+        return (
+            <select value={currentChatLayout}
+                onChange={changeChatLayout}
+            >{CHAT_LAYOUTS.map((item) => (
+                <option key={item.name} value={item.name}>{item.label}</option>
+            ))}</select>
+        )
+    }
+}
+
+class StreamListItem extends React.PureComponent {
+    render() {
+        const { stream, streamCloseHandler } = this.props;
+        return (
+            <div key={stream.id} className="stream-item">
+                <h3 className="stream-name">{stream.name}</h3>
+                <a className="close" onClick={streamCloseHandler}>Close</a>
+            </div>
+        );
+    }
+}
+
 export default class TwitchControls extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            chatLayouts: [{
-                    'label': 'Default',
-                    'name': 'side'
-                },
-                {
-                    'label': 'Active chat stream only',
-                    'name': 'focus'
-                },
-                {
-                    'label': 'No chat',
-                    'name': 'hidden'
-                },
-                {
-                    'label': 'Chat inline',
-                    'name': 'block'
-                }
-            ]
+            searchEnabled: false,
+            searchType: null,
         };
         this.enableSearch = this.enableSearch.bind(this);
         this.disableSearch = this.disableSearch.bind(this);
@@ -54,28 +82,11 @@ export default class TwitchControls extends React.Component {
 
     render() {
         const { streams } = this.props;
-        const { chatLayouts } = this.state;
-        const chatLayoutOptions = chatLayouts.map((item) => {
-            return (
-                <option key={item.name} value={item.name}>{item.label}</option>
-            );
-        });
-        const streamControls = streams.map((item) => {
-            return (
-                <div key={item.id} className="stream-item">
-                    <h3 className="stream-name">{item.name}</h3>
-                    <a className="close" onClick={this.clickStreamClose.bind(this, item)}>Close</a>
-                </div>
-            );
-        });
-
-
         var controlClasses = [
             'controls',
             this.state.searchEnabled ? 'search-enabled' : 'search-disabled',
             this.state.searchType + '-search'
         ].join(' ');
-
         return (
             <div className={controlClasses}>
                 <div className="inner-controls-wrap">
@@ -89,13 +100,20 @@ export default class TwitchControls extends React.Component {
                                     placeholder="Add a channel"
                                 />
                             </div>
-                            {streamControls}
+                            {streams.map((item) => (
+                                <StreamListItem
+                                    key={item.id}
+                                    stream={item}
+                                    streamCloseHandler={this.clickStreamClose.bind(this, item)}
+                                />
+                            ))}
                         </div>
                         <div className="chat-controls">
                             <div className="control-section">
-                                <select value={this.props.currentChatLayout}
-                                    onChange={this.props.changeChatLayout}
-                                >{chatLayoutOptions}</select>
+                                <ChatLayoutSelect
+                                    currentChatLayout={this.props.currentChatLayout}
+                                    changeChatLayout={this.props.changeChatLayout}
+                                />
                             </div>
                         </div>
                     </div>

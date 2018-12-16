@@ -16,12 +16,7 @@ var addClass = function(el, className) {
         el.className += ' ' + className;
 };
 
-/**
- * Search module
- * A simple search box component.
- **/
-
- export default class TwitchControls extends React.Component {
+export default class TwitchControls extends React.Component {
 
      constructor(props) {
          super(props);

@@ -37,6 +37,11 @@ export default class TwitchChatWrapper extends React.Component {
         this.chatWrapper = React.createRef();
         this.chatPanels = React.createRef();
         this.chatTabs = React.createRef();
+        this.updateChatSize = this.updateChatSize.bind(this);
+    }
+
+    componentDidUpdate() {
+        this.updateChatSize();
     }
 
     componentDidMount() {
@@ -59,30 +64,26 @@ export default class TwitchChatWrapper extends React.Component {
     render() {
         const { streams, activeStream, setActiveStream } = this.props;
 
-        const chatTabs = streams.map((item) => {
-            return (<ChatTab
-                key={item.name}
-                stream={item}
-                isActive={item === activeStream}
-                clickHandler={setActiveStream.bind(this, item)}
-            />);
-        });
-
-        const chatPanels = streams.map((item) => {
-            return (<ChatPanel
-                key={item.name}
-                stream={item}
-                isActive={item === activeStream}
-            />);
-        });
-
         return (
             <div className="twitch-chat" ref={this.chatWrapper}>
                 <ul role="tablist" ref={this.chatTabs}>
-                    {chatTabs}
+                    {streams.map((item) => (
+                        <ChatTab
+                            key={item.name}
+                            stream={item}
+                            isActive={item === activeStream}
+                            clickHandler={setActiveStream.bind(this, item)}
+                        />
+                    ))}
                 </ul>
                 <div className="chat-panels" ref={this.chatPanels}>
-                    {chatPanels}
+                    {streams.map((item) => (
+                        <ChatPanel
+                            key={item.name}
+                            stream={item}
+                            isActive={item === activeStream}
+                        />
+                    ))}
                 </div>
             </div>
         );
