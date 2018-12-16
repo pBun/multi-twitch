@@ -129,7 +129,7 @@ export default class TwitchMultiStream extends React.Component {
 
         var noStreamMessage;
         if (streams.length < 1) {
-            noStreamMessage = (<p className="no-streams-message">Click on the '+' to start adding streams</p>);
+            noStreamMessage = (<p className="no-streams-message"> &lt; Click MENU to start adding streams</p>);
         }
 
         var multiStreamClasses = [

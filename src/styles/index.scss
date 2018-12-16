@@ -60,6 +60,7 @@ a {
     width: 100%;
     box-sizing: border-box;
     transition: 0.3s opacity;
+    background-color: #f2f2f2;
     .menu-open & {
         opacity: 0.25;
         iframe {
@@ -74,7 +75,7 @@ a {
     transform: translateY(-50%);
     text-align: center;
     font-size: 26px;
-    margin-left: 0.5em;
+    margin: 0 0 0 2em;
 }
 /* # Chat
 ================================================== */
