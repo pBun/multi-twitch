@@ -9,11 +9,10 @@ html {
 body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    color: #32323e;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     line-height: 1.2em;
-    background: #000;
+    background: #09060f;
 }
 
 label,
@@ -52,7 +51,7 @@ a {
     width: 100%;
     box-sizing: border-box;
     transition: 0.3s opacity;
-    background-color: #f2f2f2;
+    color: #6441a5;
     .menu-open & {
         opacity: 0.25;
         iframe {
@@ -68,6 +67,7 @@ a {
     text-align: center;
     font-size: 26px;
     margin: 0 0 0 2em;
+    color: #dfd7ef;
 }
 /* # Chat
 ================================================== */
@@ -270,7 +270,6 @@ a {
     line-height: 1.5em;
     text-decoration: none;
     white-space: nowrap;
-    width: 100%;
     position: absolute;
     margin-top: 0.25em;
     z-index: 2;
@@ -290,6 +289,40 @@ a {
     padding: 0.5em;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
+    text-align: left;
+}
+
+.DropdownLink__image,
+.DropdownLink__text {
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 300;
+}
+
+.DropdownLink__image {
+    display: inline-block;
+    height: 2em;
+    width: 2em;
+    margin-right: 0.5em;
+    img {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
+.DropdownLink__title,
+.DropdownLink__subtitle {
+    display: block;
+}
+.DropdownLink__title {
+    line-height: 1em;
+    margin-bottom: 0.25em;
+}
+.DropdownLink__subtitle {
+    text-transform: uppercase;
+    font-size: 0.5em;
+    line-height: 1em;
 }
 
 .DropdownLink--highlighted {
@@ -374,7 +407,6 @@ $menuBg: #dfd7ef;
     height: 100%;
     box-sizing: border-box;
     padding-top: 35px;
-    overflow-y: auto;
 }
 
 .controls .stream-item {
@@ -441,11 +473,6 @@ $menuBg: #dfd7ef;
 }
 
 // search panel styling logic
-
-.inner-controls-wrap {
-    white-space: nowrap;
-    overflow: hidden;
-}
 
 .controls .main-controls,
 .controls .search-controls {

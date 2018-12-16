@@ -10,12 +10,23 @@ class DropdownLink extends React.PureComponent {
             mouseOverHandler,
             focusHandler
         } = this.props;
+        const title = item.name === item.display_name
+            ? item.name : `${item.name} (${item.display_name})`;
+        const subtitle = `${item.status} | ${item.game}`;
         return (
             <a className={classNames('DropdownLink', { 'DropdownLink--highlighted': isHighlighted })}
                 onClick={clickHandler.bind(this, item)}
                 onMouseOver={mouseOverHandler.bind(this, item)}
                 onFocus={focusHandler.bind(this, item)}
-            >{item.name}</a>
+            >
+                <span className="DropdownLink__image">
+                    <img src={item.logo} />
+                </span>
+                <span className="DropdownLink__text">
+                    <span className="DropdownLink__title">{title}</span>
+                    <span className="DropdownLink__subtitle">{subtitle}</span>
+                </span>
+            </a>
         );
     }
 }
