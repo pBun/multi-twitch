@@ -13,9 +13,9 @@
     "scripts": {
         "dev": "webpack-dev-server --open",
         "build": "webpack --mode production",
-        "deploy-clean": "rimraf src .babelrc .editorconfig package-lock.json package.json postcss.config.js README.md webpack.config.js",
-        "deploy-prep": "git branch -f gh-pages && git checkout gh-pages && git reset --hard origin/master && npm run build && cp -r dist/* . && npm run deploy-clean",
-        "deploy": "npm run deploy-prep && git add -A && git commit -m \"gh-pages deploy\" && git push origin gh-pages --force && git checkout master"
+        "deploy:clean": "rimraf src .babelrc .editorconfig package-lock.json package.json postcss.config.js README.md webpack.config.js",
+        "deploy:prep": "git branch -f gh-pages && git checkout gh-pages && git reset --hard origin/master && npm run build && cp -r dist/* . && npm run deploy:clean",
+        "deploy": "npm run deploy:prep && git add -A && git commit -m \"gh-pages deploy\" && git push origin gh-pages --force && git checkout master"
     },
     "dependencies": {},
     "devDependencies": {
