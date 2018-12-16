@@ -1,6 +1,3 @@
 .DS_Store
-.sass-cache
-public
-Desktop.ini
+dist
 node_modules
-app/assets/stylesheets/generated
