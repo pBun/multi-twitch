@@ -458,29 +458,13 @@ $menuBg: #dfd7ef;
     top: 50%;
     position: absolute;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(90deg);
+    transform: translate(-51%, -50%) rotate(90deg);
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     font-weight: 400;
     white-space: nowrap;
     transform-origin: center;
-}
-.controls .control-text:after {
-    content: '';
-    text-align: center;
-    transition: 0.3s transform;
-    font-size: 1.333em;
-    display: inline-block;
-    margin-left: 0.25em;
-    .menu-open & {
-        transform: rotate(45deg);
-    }
-}
-
-.control-text-text,
-.control-text:after {
-    display: inline-block;
     vertical-align: middle;
 }
 
