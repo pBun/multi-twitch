@@ -96,7 +96,7 @@ export default class TwitchControls extends React.Component {
                             <div className="add-stream-wrapper">
                                 <TwitchSearch
                                     streams={this.props.streams}
-                                    selectItem={this.props.addStream}
+                                    selectItemHandler={this.props.addStream}
                                     placeholder="Add a channel"
                                 />
                             </div>

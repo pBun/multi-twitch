@@ -24,14 +24,6 @@ legend {
 a {
     text-decoration: none;
     color: #6441a5;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.2s ease-in-out;
-
-    &:focus,
-    &:hover {
-        color: #6441a5;
-        border-color: rgba(100, 65, 165, 0.25);
-    }
 }
 
 .image-wrapper img {
@@ -262,18 +254,18 @@ a {
 }
 /* # Search
 ================================================== */
-.twitch-search {
+.TwitchSearch {
     position: relative;
 }
 
-.twitch-search .input-text {
+.TwitchSearch__input {
     color: #666;
     padding: 0.4em;
     width: 100%;
     margin: 0;
 }
 
-.twitch-search .menu {
+.TwitchSearch__autocomplete {
     display: block;
     line-height: 1.5em;
     text-decoration: none;
@@ -281,51 +273,30 @@ a {
     width: 100%;
     position: absolute;
     margin-top: 0.25em;
-
-    &.menu-open {
-        visibility: visible;
-        z-index: 2;
-        background: #fff;
-        border: 1px solid #d1d1d1;
-    }
-
-    &.menu-hidden {
-        visibility: hidden;
-    }
+    z-index: 2;
 }
 
-.twitch-search .menu ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+.TwitchSearch__autocomplete--hidden {
+    display: none;
 }
 
-.twitch-search .menu li {
-    margin: 0;
-    transition: background-color 0.2s ease-in-out;
-
-    a {
-        display: block;
-        padding: 0.5em;
-        transition: color 0.2s ease-in-out;
-        cursor: pointer;
-
-        &:active,
-        &:focus,
-        &:hover,
-        &:visited {
-            border-color: transparent;
-        }
-    }
-
-    &.focus {
-        background-color: #6441a5;
-
-        a {
-            color: #fff;
-        }
-    }
+.DropdownMenu {
+    background: #fff;
+    border: 1px solid #d1d1d1;
 }
+
+.DropdownLink {
+    display: block;
+    padding: 0.5em;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.DropdownLink--highlighted {
+    background-color: #6441a5;
+    color: #fff;
+}
+
 /* # Controls
 ================================================== */
 $menuOpenWidth: 300px;
@@ -531,7 +502,7 @@ $menuBg: #dfd7ef;
     }
 }
 
-.controls .search-controls .twitch-search {
+.controls .search-controls .TwitchSearch {
     margin: 50px 0.5em 1em;
 }
 
