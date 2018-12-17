@@ -10,9 +10,16 @@ const DEFAULT_LAYOUT = 'side';
 
 class TwitchBlock extends React.PureComponent {
     render() {
-        const { blockType, blockStyles, children } = this.props;
+        const { blockType, blockStyles, children, isFocused } = this.props;
         return (
-            <div className={classNames('TwitchBlock', `TwitchBlock--${blockType}`)} style={blockStyles}>
+            <div className={classNames(
+                'TwitchBlock',
+                `TwitchBlock--${blockType}`,
+                {
+                    'TwitchBlock--focused': isFocused,
+                    'TwitchBlock--notFocused': !isFocused,
+                },
+            )} style={blockStyles}>
                 <div className="TwitchBlock__inner">
                     {children}
                 </div>
@@ -43,6 +50,10 @@ export default class TwitchMultiStream extends React.Component {
         this.addStream = this.addStream.bind(this);
         this.removeStream = this.removeStream.bind(this);
         this.changeChatLayout = this.changeChatLayout.bind(this);
+    }
+
+    componentDidMount() {
+        this.focusAudio(this.state.activeStream);
     }
 
     updateHash(newStreams) {
@@ -134,6 +145,7 @@ export default class TwitchMultiStream extends React.Component {
                     key={item.id}
                     blockType="stream"
                     blockStyles={twitchBlockStyles}
+                    isFocused={activeStream.id === item.id}
                 >
                     <TwitchStream
                         stream={item}

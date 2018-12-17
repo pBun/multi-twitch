@@ -140,20 +140,17 @@ a {
 
 .TwitchBlock--stream {
     background: #000;
+    transition: opacity 0.3s;
 
     .TwitchStream,
     .TwitchStream > div {
         position: relative;
         height: 100%;
     }
+}
 
-    .TwitchStream {
-        transition: opacity 0.3s;
-
-        &.not-focused {
-            opacity: 0.8;
-        }
-    }
+.TwitchBlock--stream.TwitchBlock--notFocused {
+    opacity: 0.8;
 }
 
 .MultiStream--chatHidden .TwitchBlock--stream .TwitchStream--notFocused {
@@ -211,8 +208,9 @@ a {
     bottom: 0;
     background: transparent;
 
-    .TwitchStream--notFocused {
+    &.TwitchBlock--notFocused {
         opacity: 0;
+        pointer-events: none;
     }
 }
 
