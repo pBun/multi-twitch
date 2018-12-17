@@ -52,10 +52,6 @@ export default class TwitchMultiStream extends React.Component {
         this.changeChatLayout = this.changeChatLayout.bind(this);
     }
 
-    componentDidMount() {
-        this.focusAudio(this.state.activeStream);
-    }
-
     updateHash(newStreams) {
         const { protocol, host, pathname } = window.location;
         const { streams, currentChatLayout } = this.state;
