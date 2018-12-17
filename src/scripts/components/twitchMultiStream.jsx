@@ -1,9 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
+import qs from 'qs';
 
 import TwitchControls from './twitchControls/twitchControls.jsx';
 import TwitchStream from './twitchStream.jsx';
 import TwitchChatWrapper from './twitchChat/twitchChatWrapper.jsx';
+
+const DEFAULT_LAYOUT = 'side';
 
 class TwitchBlock extends React.PureComponent {
     render() {
@@ -32,7 +35,7 @@ export default class TwitchMultiStream extends React.Component {
         this.state = {
             streams: streams,
             activeStream: streams[0],
-            currentChatLayout: 'side'
+            currentChatLayout: props.layout || DEFAULT_LAYOUT,
         };
         this.setActiveStream = this.setActiveStream.bind(this);
         this.focusAudio = this.focusAudio.bind(this);
@@ -42,15 +45,21 @@ export default class TwitchMultiStream extends React.Component {
         this.changeChatLayout = this.changeChatLayout.bind(this);
     }
 
-    componentDidUpdate() {
-        this.updateHash();
-    }
-
-    updateHash() {
-        const streamNames = this.state.streams.map((stream) => {
+    updateHash(newStreams) {
+        const { protocol, host, pathname } = window.location;
+        const { streams, currentChatLayout } = this.state;
+        const streamNames = streams.map((stream) => {
             return stream.name;
         });
-        window.location.hash = streamNames.join('&');
+        const urlData = {};
+        if (currentChatLayout !== DEFAULT_LAYOUT) urlData.layout = currentChatLayout;
+        if (streamNames.length) urlData.streams = streamNames.join(',');
+        const query = qs.stringify(urlData);
+        let newUrl = `${protocol}//${host}${pathname}`;
+        newUrl = query ? `${newUrl}?${query}` : newUrl;
+        window.history.replaceState({
+            path: newUrl
+        }, '', newUrl);
     }
 
     addStream(stream) {
@@ -63,8 +72,8 @@ export default class TwitchMultiStream extends React.Component {
         });
         this.setState({
             streams: streams,
-            activeStream: activeStream || streams[0]
-        });
+            activeStream: activeStream || streams[0],
+        }, this.updateHash);
     }
 
     removeStream(stream) {
@@ -77,7 +86,7 @@ export default class TwitchMultiStream extends React.Component {
             streams: streams,
             activeStream: activeStream != stream ? activeStream :
             streams.length ? streams[0] : null
-        });
+        }, this.updateHash);
     }
 
     focusAudio(targetStream) {
@@ -100,7 +109,7 @@ export default class TwitchMultiStream extends React.Component {
     changeChatLayout(e) {
         this.setState({
             currentChatLayout: e.target.value
-        });
+        }, this.updateHash);
     }
 
     setActiveStream(stream) {
