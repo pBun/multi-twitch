@@ -1,4 +1,5 @@
 var React = require('react');
+var classNames = require('classnames');
 
 export default class TwitchStream extends React.Component {
 
@@ -58,14 +59,14 @@ export default class TwitchStream extends React.Component {
     }
 
     render() {
-
-        var embedId = this.state.embedId;
-        var embedClasses = [
-            'embed-container',
-            this.props.activeStream.id === this.props.stream.id ? 'focused' : 'not-focused'
-        ].join(' ');
+        const isFocused = this.props.activeStream.id === this.props.stream.id;
         return (
-            <div className={embedClasses}><div id={embedId} /></div>
+            <div className={classNames('TwitchStream', {
+                'TwitchStream--focused': isFocused,
+                'TwitchStream--notFocused': !isFocused,
+            })}>
+                <div id={this.state.embedId} />
+            </div>
         );
     }
 

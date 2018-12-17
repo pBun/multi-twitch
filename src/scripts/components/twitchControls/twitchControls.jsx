@@ -1,8 +1,9 @@
 import React from 'react';
+import classNames from 'classnames';
 import TwitchSearch from './twitchSearch.jsx';
 
 const CHAT_LAYOUTS = [{
-        'label': 'Default',
+        'label': 'Chat on side',
         'name': 'side'
     },
     {
@@ -23,7 +24,7 @@ class ChatLayoutSelect extends React.PureComponent {
     render() {
         const { currentChatLayout, changeChatLayout } = this.props;
         return (
-            <select value={currentChatLayout}
+            <select className="ChatLayoutSelect" value={currentChatLayout}
                 onChange={changeChatLayout}
             >{CHAT_LAYOUTS.map((item) => (
                 <option key={item.name} value={item.name}>{item.label}</option>
@@ -32,97 +33,52 @@ class ChatLayoutSelect extends React.PureComponent {
     }
 }
 
-class StreamListItem extends React.PureComponent {
+class ActiveStreamListItem extends React.PureComponent {
     render() {
         const { stream, streamCloseHandler } = this.props;
         return (
-            <div key={stream.id} className="stream-item">
-                <h3 className="stream-name">{stream.name}</h3>
-                <a className="close" onClick={streamCloseHandler}>Close</a>
-            </div>
+            <a key={stream.id} className="ActiveStreamListItem" onClick={streamCloseHandler}>
+                <span className="ActiveStreamListItem__name">{stream.name}</span>
+            </a>
         );
     }
 }
 
-export default class TwitchControls extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            searchEnabled: false,
-            searchType: null,
-        };
-        this.enableSearch = this.enableSearch.bind(this);
-        this.disableSearch = this.disableSearch.bind(this);
-        this.selectSearchResult = this.selectSearchResult.bind(this);
-        this.clickStreamClose = this.clickStreamClose.bind(this);
-    }
-
-    enableSearch(searchType) {
-        this.setState({
-            searchEnabled: true,
-            searchType: searchType
-        });
-    }
-
-    disableSearch() {
-        this.setState({
-            searchEnabled: false
-        });
-    }
-
-    selectSearchResult(stream) {
-        this.props.addStream(stream);
-        this.disableSearch();
-    }
-
-    clickStreamClose(stream) {
-        this.props.removeStream(stream);
-    }
-
+export default class TwitchControls extends React.PureComponent {
     render() {
         const { streams } = this.props;
-        var controlClasses = [
-            'controls',
-            this.state.searchEnabled ? 'search-enabled' : 'search-disabled',
-            this.state.searchType + '-search'
-        ].join(' ');
         return (
-            <div className={controlClasses}>
-                <div className="inner-controls-wrap">
-                    <div className="main-controls">
-                        <div className="stream-controls control-section">
-                            <h1 className="site-headline"> Multi Twitch < /h1>
-                            <div className="add-stream-wrapper">
-                                <TwitchSearch
-                                    streams={this.props.streams}
-                                    selectItemHandler={this.props.addStream}
-                                    placeholder="Add a channel"
-                                />
-                            </div>
+            <div className="MainControls">
+                <div className="MainControls__inner">
+                    <div className="StreamControls MainControls__section">
+                        <h1 className="MainControls__headline"> Multi Twitch < /h1>
+                        <div className="StreamControls__add">
+                            <TwitchSearch
+                                streams={this.props.streams}
+                                selectItemHandler={this.props.addStream}
+                                placeholder="Add a channel"
+                            />
+                        </div>
+                        <div className="ActiveStreamList">
                             {streams.map((item) => (
-                                <StreamListItem
+                                <ActiveStreamListItem
                                     key={item.id}
                                     stream={item}
-                                    streamCloseHandler={this.clickStreamClose.bind(this, item)}
+                                    streamCloseHandler={this.props.removeStream.bind(this, item)}
                                 />
                             ))}
                         </div>
-                        <div className="chat-controls">
-                            <div className="control-section">
-                                <ChatLayoutSelect
-                                    currentChatLayout={this.props.currentChatLayout}
-                                    changeChatLayout={this.props.changeChatLayout}
-                                />
-                            </div>
-                        </div>
+                    </div>
+                    <div className="ChatControls MainControls__section">
+                        <ChatLayoutSelect
+                            currentChatLayout={this.props.currentChatLayout}
+                            changeChatLayout={this.props.changeChatLayout}
+                        />
                     </div>
                 </div>
-
-                <a className="control-toggle"
+                <a className="ControlToggle"
                     onClick={this.props.toggleControls}
-                ><span className="control-text">menu</span></a>
-
+                ><span className="ControlToggle__text">menu</span></a>
             </div>
         );
     }

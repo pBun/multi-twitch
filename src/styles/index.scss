@@ -7,8 +7,6 @@ html {
 }
 
 body {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     line-height: 1.2em;
@@ -25,34 +23,25 @@ a {
     color: #6441a5;
 }
 
-.image-wrapper img {
-    width: 100%;
-    display: block;
-}
-
-.error {
-    color: #ff0033;
-}
-
 * {
     box-sizing: border-box;
 }
 
 /* # General layout
 ================================================== */
-.main-wrapper {
+.main {
     position: relative;
     text-align: center;
 }
 
-.streams {
+.StreamList {
     height: 100vh;
     position: relative;
     width: 100%;
     box-sizing: border-box;
     transition: 0.3s opacity;
     color: #6441a5;
-    .menu-open & {
+    .MultiStream--menuOpen & {
         opacity: 0.25;
         iframe {
             pointer-events: none;
@@ -60,7 +49,7 @@ a {
     }
 }
 
-.no-streams-message {
+.MultiStream__noStreams {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -69,6 +58,7 @@ a {
     margin: 0 0 0 2em;
     color: #dfd7ef;
 }
+
 /* # Chat
 ================================================== */
 
@@ -150,33 +140,33 @@ a {
 }
 /* # Twitch Blocks
 ================================================== */
-.twitch-block {
+.TwitchBlock {
     float: left;
 }
 
-.embed-container,
-.twitch-block-inner {
+.TwitchStream,
+.TwitchBlock__inner {
     height: 100%;
 }
 
-.embed-container embed,
-.embed-container iframe,
-.embed-container object {
+.TwitchStream embed,
+.TwitchStream iframe,
+.TwitchStream object {
     width: 100%;
     height: 100%;
     border: 0;
 }
 
-.twitch-block.stream {
+.TwitchBlock--stream {
     background: #000;
 
-    .embed-container,
-    .embed-container > div {
+    .TwitchStream,
+    .TwitchStream > div {
         position: relative;
         height: 100%;
     }
 
-    .embed-container {
+    .TwitchStream {
         transition: opacity 0.3s;
 
         &.not-focused {
@@ -185,11 +175,11 @@ a {
     }
 }
 
-.chat-hidden .twitch-block.stream .embed-container.not-focused {
+.MultiStream--chatHidden .TwitchBlock--stream .TwitchStream--notFocused {
     opacity: 1;
 }
 
-.twitch-block.chat {
+.TwitchBlock--chat {
     .stream-chat {
         padding: 0;
         height: 100%;
@@ -203,19 +193,19 @@ a {
 }
 /* # Block Layouts
 ================================================== */
-.twitch-block {
+.TwitchBlock {
     overflow: hidden;
     width: 20%;
     height: 20%;
 }
 /* # Chat Layouts
 ================================================== */
-.chat-focus,
-.chat-side {
+.MultiStream--chatFocus,
+.MultiStream--chatSide {
     box-sizing: border-box;
     padding-right: $sideChatWidth;
 
-    .twitch-block.chat {
+    .TwitchBlock--chat {
         position: absolute;
         top: 0;
         left: 100%;
@@ -223,14 +213,14 @@ a {
         width: $sideChatWidth !important;
         height: 100% !important;
 
-        .twitch-block-inner {
+        .TwitchBlock__inner {
             padding: 0;
             height: 100%;
         }
     }
 
-    &.chat-focus {
-        .streams .stream {
+    &.MultiStream--chatFocus {
+        .StreamList .stream {
             width: 100% !important;
             height: 100% !important;
             position: absolute;
@@ -240,15 +230,15 @@ a {
             bottom: 0;
             background: transparent;
 
-            .embed-container.not-focused {
+            .TwitchStream--notFocused {
                 opacity: 0;
             }
         }
     }
 }
 
-.chat-hidden {
-    .twitch-block.chat {
+.MultiStream--chatHidden {
+    .TwitchBlock--chat {
         display: none;
     }
 }
@@ -336,11 +326,11 @@ $menuOpenWidth: 300px;
 $menuToggleWidth: 30px;
 $menuBg: #dfd7ef;
 
-.multi-stream {
+.MultiStream {
     margin-left: $menuToggleWidth;
 }
 
-.controls {
+.MainControls {
     position: fixed;
     top: 0;
     left: 0;
@@ -356,13 +346,13 @@ $menuBg: #dfd7ef;
     line-height: 1.5;
 }
 
-.menu-closed {
-    .controls {
+.MultiStream--menuClosed {
+    .MainControls {
         transform: translateX(-100%);
     }
 }
 
-.controls {
+.MainControls {
     input,
     select {
         color: #666;
@@ -373,80 +363,61 @@ $menuBg: #dfd7ef;
     }
 }
 
-.controls .control-section {
+.MainControls__section {
     margin: 0 1em;
 }
 
-.controls .section-headline {
-    font-weight: 200;
-    font-size: 24px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-}
-
-.controls .site-headline {
+.MainControls__headline {
     font-weight: 200;
     font-size: 30px;
     color: #6441a5;
     margin-top: 0;
 }
 
-.controls .hint {
-    margin-top: 0;
-    margin-bottom: 0.5em;
-}
-
-.controls .secondary-toggle {
-    cursor: pointer;
-    padding: 0 0.35em;
-    margin: 0.2em 0;
-    display: inline-block;
-    border: 0;
-}
-
-.controls .stream-controls {
+.StreamControls {
     height: 100%;
     box-sizing: border-box;
     padding-top: 35px;
 }
-
-.controls .stream-item {
-    position: relative;
-
-    .stream-name {
-        font-weight: 200;
-        font-size: 26px;
-        margin-bottom: 0.5em;
-    }
-
-    .close {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        right: 0;
-        font-size: 0;
-        cursor: pointer;
-        border: 0;
-
-        &:after {
-            content: 'x';
-            font-size: 22px;
-        }
-    }
+.ActiveStreamList {
+    margin-top: 1em;
 }
-
-.controls .chat-controls {
-    position: absolute;
-    bottom: 0;
+.ActiveStreamListItem {
+    position: relative;
+    text-align: left;
+    cursor: pointer;
+    display: block;
+    font-size: 20px;
+    margin-top: 0.5em;
+}
+.ActiveStreamListItem__name:after {
+    content: '';
+    height: 1px;
+    top: 50%;
     left: 0;
     right: 0;
-    background: $menuBg;
-
-    .control-section {
-        margin-bottom: 0.5em;
-    }
+    background: #6441a5;
+    position: absolute;
+    opacity: 0;
+    transition: 0.2s opacity;
+}
+.ActiveStreamListItem:hover .ActiveStreamListItem__name:after {
+    opacity: 1;
+}
+.ActiveStreamListItem__name {
+    display: inline-block;
+    position: relative;
+    font-weight: 200;
 }
 
-.controls .control-toggle {
+.ChatControls {
+    position: absolute;
+    bottom: 0.5em;
+    left: 0;
+    right: 0;
+}
+
+.ControlToggle {
     position: absolute;
     top: 0;
     left: 100%;
@@ -457,7 +428,7 @@ $menuBg: #dfd7ef;
     cursor: pointer;
 }
 
-.controls .control-text {
+.ControlToggle__text {
     display: block;
     top: 50%;
     position: absolute;
@@ -470,102 +441,4 @@ $menuBg: #dfd7ef;
     white-space: nowrap;
     transform-origin: center;
     vertical-align: middle;
-}
-
-// search panel styling logic
-
-.controls .main-controls,
-.controls .search-controls {
-    white-space: normal;
-    display: inline-block;
-    vertical-align: top;
-    width: 100%;
-    transition: 0.2s transform;
-    height: 100vh;
-}
-
-.controls.search-enabled .main-controls,
-.controls.search-enabled .search-controls {
-    transform: translateX(-100%);
-}
-
-.controls .search-controls .game-search,
-.controls .search-controls .stream-search {
-    display: none;
-    height: 100%;
-    width: 100%;
-}
-
-.controls.game-search .search-controls .game-search,
-.controls.stream-search .search-controls .stream-search {
-    display: block;
-}
-// search controls
-
-.controls .search-controls {
-    position: relative;
-    padding-top: 6px;
-
-    .channel-search {
-        height: 100%;
-    }
-}
-
-.controls .search-controls .secondary-toggle {
-    position: absolute;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-    font-size: 0;
-
-    &:before {
-        content: '<';
-        position: absolute;
-        top: 0;
-        left: 0;
-        font-size: 28px;
-        padding: 0.25em;
-        color: #6441a5;
-    }
-}
-
-.controls .search-controls .TwitchSearch {
-    margin: 50px 0.5em 1em;
-}
-
-.controls .search-controls .channel-list {
-    height: 100%;
-    box-sizing: border-box;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-// search controls channel results
-
-.channel-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.channel-list li {
-    margin: 0;
-    transition: background-color 0.2s ease-in-out;
-
-    a {
-        display: block;
-        padding: 0.5em;
-        transition: color 0.2s ease-in-out;
-        cursor: pointer;
-        border: 0;
-        transition: background-color 0.2s, color 0.2s;
-
-        .name {
-            margin-bottom: 0;
-        }
-    }
-}
-/* # Streams
-================================================== */
-.stream-embed {
-    padding-bottom: 56.25%;
 }

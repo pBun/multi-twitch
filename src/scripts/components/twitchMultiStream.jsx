@@ -1,8 +1,22 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import TwitchControls from './twitchControls/twitchControls.jsx';
 import TwitchStream from './twitchStream.jsx';
 import TwitchChatWrapper from './twitchChat/twitchChatWrapper.jsx';
+
+class TwitchBlock extends React.PureComponent {
+    render() {
+        const { blockType, blockStyles, children } = this.props;
+        return (
+            <div className={classNames('TwitchBlock', `TwitchBlock--${blockType}`)} style={blockStyles}>
+                <div className="TwitchBlock__inner">
+                    {children}
+                </div>
+            </div>
+        )
+    }
+}
 
 export default class TwitchMultiStream extends React.Component {
 
@@ -97,49 +111,62 @@ export default class TwitchMultiStream extends React.Component {
     render() {
         const { streams, activeStream, currentChatLayout } = this.state;
 
-        var numTwitchBlocks = streams.length + (currentChatLayout === 'block' ? 1 : 0);
-        var twitchBlockWidth = numTwitchBlocks <= 2 ? 100 : numTwitchBlocks <= 4 ? 50 : numTwitchBlocks <= 9 ? 33.3333 : 25;
-        var twitchBlockHeight = numTwitchBlocks <= 1 ? 100 : numTwitchBlocks <= 6 ? 50 : numTwitchBlocks <= 9 ? 33.3333 : 25;
-        var twitchBlockStyles = {
+        const numStreamBlocks = currentChatLayout === 'block' ? streams.length + 1
+            : currentChatLayout === 'focus' ? 1
+            : streams.length;
+        const twitchBlockWidth = numStreamBlocks <= 2 ? 100 : numStreamBlocks <= 4 ? 50 : numStreamBlocks <= 9 ? 33.3333 : 25;
+        const twitchBlockHeight = numStreamBlocks <= 1 ? 100 : numStreamBlocks <= 6 ? 50 : numStreamBlocks <= 9 ? 33.3333 : 25;
+        const twitchBlockStyles = {
             width: twitchBlockWidth + '%',
-            height: twitchBlockHeight + '%'
+            height: twitchBlockHeight + '%',
         };
         var twitchBlocks = streams.map((item) => {
+            const isHidden = currentChatLayout === 'focus' && item.id !== activeStream.id;
+            const streamBlockStyles = {
+                display: isHidden ? 'none' : '',
+                ...twitchBlockStyles,
+            }
             return (
-                <div key={item.id} className="twitch-block stream" style={twitchBlockStyles}>
-                    <div className="twitch-block-inner">
-                        <TwitchStream
-                            stream={item}
-                            activeStream={activeStream}
-                            ref={item.ref} />
-                    </div>
-                </div>
+                <TwitchBlock
+                    key={item.id}
+                    blockType="stream"
+                    blockStyles={streamBlockStyles}
+                >
+                    <TwitchStream
+                        stream={item}
+                        activeStream={activeStream}
+                        ref={item.ref} />
+                </TwitchBlock>
             );
         });
         twitchBlocks.push(
-            <div key="chat" className="twitch-block chat" style={twitchBlockStyles}>
-                <div className="twitch-block-inner">
+            <TwitchBlock
+                key="chat"
+                blockType="chat"
+                blockStyles={twitchBlockStyles}
+            >
                 <TwitchChatWrapper
                     streams={streams}
                     activeStream={activeStream}
                     setActiveStream={this.setActiveStream} />
-                </div>
-            </div>
+            </TwitchBlock>
         );
 
         var noStreamMessage;
         if (streams.length < 1) {
-            noStreamMessage = (<p className="no-streams-message"> &lt; Click MENU to start adding streams</p>);
+            noStreamMessage = (<p className="MultiStream__noStreams"> &lt; Click MENU to start adding streams</p>);
         }
 
-        var multiStreamClasses = [
-            'multi-stream',
-            'chat-' + currentChatLayout,
-            this.state.controlsOpen ? 'menu-open' : 'menu-closed'
-        ].join(' ');
-
+        const chatId = `chat${currentChatLayout.charAt(0).toUpperCase()}${currentChatLayout.slice(1)}`;
         return (
-            <div className={multiStreamClasses}>
+            <div className={classNames(
+                'MultiStream',
+                `MultiStream--${chatId}`,
+                {
+                    'MultiStream--menuOpen': this.state.controlsOpen,
+                    'MultiStream--menuClosed': !this.state.controlsOpen,
+                }
+            )}>
                 <TwitchControls
                     toggleControls={this.toggleControls}
                     streams={streams}
@@ -147,7 +174,7 @@ export default class TwitchMultiStream extends React.Component {
                     removeStream={this.removeStream}
                     currentChatLayout={currentChatLayout}
                     changeChatLayout={this.changeChatLayout}/>
-                <div className="streams" onClick={this.toggleControls.bind(this, false)}>
+                <div className="StreamList" onClick={this.toggleControls.bind(this, false)}>
                     {twitchBlocks}
                 </div>
                 {noStreamMessage}
