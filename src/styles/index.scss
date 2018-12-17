@@ -62,16 +62,16 @@ a {
 /* # Chat
 ================================================== */
 
-.chat-panels {
+.TwitchChat__chatPanels {
     position: relative;
 }
 
-.twitch-chat {
+.TwitchChat {
     position: relative;
     height: 100%;
 }
 
-.twitch-chat [role=tablist] {
+.TwitchChat__tabs {
     border-bottom: 1px solid #d1d1d1;
     margin: 0;
     padding: 0;
@@ -79,7 +79,7 @@ a {
     background: #d1d1d1;
 }
 
-.twitch-chat [role=tab] {
+.ChatTab {
     display: inline-block;
     border: 1px solid transparent;
     border-bottom: none;
@@ -95,48 +95,29 @@ a {
     a:hover {
         border-color: transparent;
     }
-
-    .tab-inner {
-        display: block;
-        padding: 6px 20px 6px 12px;
-    }
-
-    .close {
-        position: absolute;
-        top: 50%;
-        right: 0;
-        transform: translateY(-50%);
-        font-size: 0;
-
-        &:after {
-            font-size: 14px;
-            content: 'x';
-            margin-left: 5px;
-            padding: 5px;
-        }
-    }
 }
 
-.twitch-chat [role=tab][aria-selected=true] {
+.ChatTab__inner {
+    display: block;
+    padding: 6px 20px 6px 12px;
+}
+
+.ChatTab--active {
     background: #d1d1d1;
     border-color: #d1d1d1;
     font-weight: 600;
-}
-
-.twitch-chat [role=tab].active {
     outline: none;
 }
 
-.twitch-chat [role=tabpanel] {
+.ChatPanel {
     position: absolute;
     background: #f2f2f2;
     width: 100%;
     height: 100%;
     display: none;
-
-    &.active {
-        display: block;
-    }
+}
+.ChatPanel--active {
+    display: block;
 }
 /* # Twitch Blocks
 ================================================== */
@@ -218,22 +199,20 @@ a {
             height: 100%;
         }
     }
+}
 
-    &.MultiStream--chatFocus {
-        .StreamList .stream {
-            width: 100% !important;
-            height: 100% !important;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: transparent;
+.MultiStream--chatFocus .TwitchBlock--stream {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
 
-            .TwitchStream--notFocused {
-                opacity: 0;
-            }
-        }
+    .TwitchStream--notFocused {
+        opacity: 0;
     }
 }
 

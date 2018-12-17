@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import TwitchChat from './twitchChat.jsx';
 
@@ -6,12 +7,17 @@ class ChatTab extends React.PureComponent {
     render() {
         const { stream, isActive, clickHandler } = this.props;
         return (
-            <li key={stream.id} role="tab"
-                className={isActive ? 'active' : 'inactive'}
-                aria-selected={isActive ? 'true' : 'false'}
-                aria-expanded={isActive ? 'true' : 'false'}
+            <li
+                className={classNames(
+                    'ChatTab',
+                    {
+                        'ChatTab--active': isActive,
+                        'ChatTab--inactive': !isActive,
+                    },
+                )}
+                key={stream.id} role="tab"
             >
-                <a className="tab-inner" onClick={clickHandler}>{stream.name}</a>
+                <a className="ChatTab__inner" onClick={clickHandler}>{stream.name}</a>
             </li>
         );
     }
@@ -21,8 +27,15 @@ class ChatPanel extends React.PureComponent {
     render() {
         const { stream, isActive } = this.props;
         return (
-            <div key={stream.id} role="tabpanel"
-                className={isActive ? 'active' : 'inactive'}
+            <div
+                className={classNames(
+                    'ChatPanel',
+                    {
+                        'ChatPanel--active': isActive,
+                        'ChatPanel--inactive': !isActive,
+                    },
+                )}
+                key={stream.id}
             >
                 <TwitchChat stream={stream} />
             </div>
@@ -65,8 +78,8 @@ export default class TwitchChatWrapper extends React.Component {
         const { streams, activeStream, setActiveStream } = this.props;
 
         return (
-            <div className="twitch-chat" ref={this.chatWrapper}>
-                <ul role="tablist" ref={this.chatTabs}>
+            <div className="TwitchChat" ref={this.chatWrapper}>
+                <ul className="TwitchChat__tabs" ref={this.chatTabs}>
                     {streams.map((item) => (
                         <ChatTab
                             key={item.name}
@@ -76,7 +89,7 @@ export default class TwitchChatWrapper extends React.Component {
                         />
                     ))}
                 </ul>
-                <div className="chat-panels" ref={this.chatPanels}>
+                <div className="TwitchChat__chatPanels" ref={this.chatPanels}>
                     {streams.map((item) => (
                         <ChatPanel
                             key={item.name}

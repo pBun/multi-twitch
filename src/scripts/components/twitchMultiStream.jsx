@@ -112,7 +112,6 @@ export default class TwitchMultiStream extends React.Component {
         const { streams, activeStream, currentChatLayout } = this.state;
 
         const numStreamBlocks = currentChatLayout === 'block' ? streams.length + 1
-            : currentChatLayout === 'focus' ? 1
             : streams.length;
         const twitchBlockWidth = numStreamBlocks <= 2 ? 100 : numStreamBlocks <= 4 ? 50 : numStreamBlocks <= 9 ? 33.3333 : 25;
         const twitchBlockHeight = numStreamBlocks <= 1 ? 100 : numStreamBlocks <= 6 ? 50 : numStreamBlocks <= 9 ? 33.3333 : 25;
@@ -121,16 +120,11 @@ export default class TwitchMultiStream extends React.Component {
             height: twitchBlockHeight + '%',
         };
         var twitchBlocks = streams.map((item) => {
-            const isHidden = currentChatLayout === 'focus' && item.id !== activeStream.id;
-            const streamBlockStyles = {
-                display: isHidden ? 'none' : '',
-                ...twitchBlockStyles,
-            }
             return (
                 <TwitchBlock
                     key={item.id}
                     blockType="stream"
-                    blockStyles={streamBlockStyles}
+                    blockStyles={twitchBlockStyles}
                 >
                     <TwitchStream
                         stream={item}
